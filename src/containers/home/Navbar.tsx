@@ -1,7 +1,7 @@
 import React  from 'react';
 import styled from 'styled-components';
-import { Button } from '../../components/button/Button';
-import { NavLink } from '../../components/NavLink/NavLink';
+import { Button } from '../../components copy/button/Button';
+import { NavLink } from '../../components copy/NavLink/NavLink';
 import {FaTwitter} from "react-icons/fa";
 import {FaHome} from "react-icons/fa"
 import {FaHashtag} from "react-icons/fa";
