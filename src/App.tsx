@@ -4,9 +4,9 @@ import { Home } from './containers/home/Home';
 
 function App() {
   return (
-    <div className="container-fluid" style={{backgroundColor: "red", height: "100vh"}}>
+    <div className="container-fluid" style={{backgroundColor: "black", height: "100vh"}}>
       <div className = "row">
-        <div className='container' style={{backgroundColor:"blue", height: "100vh"}}> 
+        <div className='container' style={{height: "100vh"}}> 
         {/*whole app goes down here */}
           <Home />
 
