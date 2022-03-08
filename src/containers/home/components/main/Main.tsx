@@ -14,7 +14,7 @@ export const Main = () => {
   return (
     <main className="col-6">
       {data.map(post => {
-        return <Post key = {post.id} title = {post.title} content ={post.body} />;
+        return <Post key={post.id} title={post.title} content={post.body} />;
       })}
     </main>
   );

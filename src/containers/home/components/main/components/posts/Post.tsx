@@ -55,21 +55,20 @@ const Styled = {
   IconWrapper: styled.div`
     display: flex;
     flex: 1;
-    padding: 10px
+    padding: 10px;
   `,
   Icon: styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background: red;
-  
   `,
   MainContent: styled.div`
     display: flex;
     flex: 10;
     flex-direction: column;
     border: 1px solid yellow;
-    padding: 10px
+    padding: 10px;
   `,
   Title: styled.h4`
     margin: 0;
