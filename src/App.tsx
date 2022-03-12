@@ -1,6 +1,8 @@
 import React from 'react';
+import {Navbar} from '../src/containers/navbar/Navbar';
+import {Search} from '../src/containers/search/Search';
+import {RoutesComponent} from './state/RoutesComponent';
 import './App.css';
-import {Home} from './containers/home/components/Home';
 
 function App() {
   return (
@@ -8,7 +10,11 @@ function App() {
       <div className="row">
         <div className="container">
           {/*whole app goes down here */}
-          <Home />
+          <div className="row">
+            <Navbar />
+            <RoutesComponent />
+            <Search />
+          </div>
         </div>
       </div>
     </div>

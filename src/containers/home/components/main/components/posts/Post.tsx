@@ -1,15 +1,30 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {Action} from '../posts/components/Action';
+// import type {Posts} from '../../types';
 
+//interface Props explains what type will be sent through props
 interface Props {
   title: string;
-  content: string;
+  body: string;
+  id: number;
+  userId: number;
+  //or if we're using spread operator ...post then we can assign what kind of elements will appear:
+  // post: Posts
 }
 
-export const Post = ({title, content}: Props) => {
+//single post which will be the same for all the posts fetched from API, This component will be imported in Main component
+export const Post = ({title, body, id, userId}: Props) => {
+  //storing useNavigate() into navigate cosnt. Inside useNavigate we have multiple options to navigate to some route
+  const navigate = useNavigate();
   return (
-    <Styled.Container>
+    //onClick event on the wrappper of the single post. Through props we will get id and we can navigate to the content of the clicked post
+    <Styled.Container
+      onClick={() =>
+        navigate(`/post/${id}`, {state: [{title, body, id, userId}]})
+      }
+    >
       <Styled.AdditionalInfo>Bitcoin Cryptocurrency</Styled.AdditionalInfo>
       <Styled.Wrapper>
         <Styled.IconWrapper>
@@ -17,7 +32,7 @@ export const Post = ({title, content}: Props) => {
         </Styled.IconWrapper>
         <Styled.MainContent>
           <Styled.Title>{title}</Styled.Title>
-          <Styled.Content>{content}</Styled.Content>
+          <Styled.Content>{body}</Styled.Content>
           <Styled.Actions>
             <Action actionNumber={4444} /> <Action actionNumber={4444} />
             <Action actionNumber={3526} />
