@@ -22,7 +22,7 @@ export const Main = () => {
   }, []);
 
   return (
-    <main className="col-6">
+    <main>
       {data?.map(post => {
         return (
           <Post

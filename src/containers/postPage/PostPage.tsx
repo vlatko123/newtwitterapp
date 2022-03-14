@@ -1,7 +1,6 @@
 // import {Post} from 'containers/home/components/main/components/posts/Post';
 import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
-import type {Posts} from '../home/components/main/types';
 
 export const PostPage = (props: any) => {
   const [data, setData] = useState();
@@ -10,8 +9,6 @@ export const PostPage = (props: any) => {
   const params = useParams();
 
   const location = useLocation();
-  // const state = location.state as Posts;
-  // console.log(state);
 
   useEffect(() => {
     const fetchFromApi = async () => {
