@@ -16,7 +16,14 @@ const Styled = {
     color: white;
     margin-left: 15px;
     display: flex;
+    justify-content: center;
     flex: 1;
     align-items: center;
+   
+    &:hover {
+      border-radius: 50px;
+      background-color: rgb(32, 35, 39);
+    }
+
   `,
 };

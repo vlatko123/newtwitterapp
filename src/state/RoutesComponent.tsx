@@ -2,6 +2,9 @@ import { Explore } from '../containers/home/components/explore/Explore';
 import {Routes, Route} from 'react-router-dom';
 import {Main} from '../containers/home/components/main/Main';
 import {PostPage} from '../containers/postPage/PostPage';
+import { Notifications } from '../../src/containers/home/components/notifications/Notifications';
+import { All } from '../containers/home/components/notifications/All';
+import { Mentions } from '../containers/home/components/notifications/Mentions';
 
 export const RoutesComponent = () => {
   return (
@@ -11,7 +14,10 @@ export const RoutesComponent = () => {
         <Route path="post/:id" element={<PostPage />} />
         <Route path="/home" element={<Main />} />
         <Route path="explore" element={<Explore />} />
-        <Route path="notifications" element={<div>notifications</div>} />
+        <Route path="notifications" element={<Notifications />}>
+          <Route path="all" element={<All />} />
+          <Route path="mentions" element={<Mentions/>} />
+        </Route>
         <Route path="messages" element={<div>messages</div>} />
         <Route path="bookmarks" element={<div>bookmarks</div>} />
         <Route path="lists" element={<div>lists</div>} />

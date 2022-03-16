@@ -10,7 +10,7 @@ import {Title} from './components/whatHappening/Title';
 export const Explore = () => {
   return (
     <Styled.Container>
-      <ExploreSearchInput />
+      <ExploreSearchInput/>
       <HeadingPicture />
       <Title title="Trends for you" />
       <TrendingNews />
