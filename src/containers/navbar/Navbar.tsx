@@ -28,6 +28,7 @@ export const Navbar = () => {
         name="Twitter"
         backgroundColor="RGB(29, 155, 240)"
         textColor="white"
+        padding = "15px 30px"
       />
     </Styled.Container>
   );
