@@ -22,13 +22,15 @@ export const Post = ({title, body, id, userId}: Props) => {
     //onClick event on the wrappper of the single post. Through props we will get id and we can navigate to the content of the clicked post
     <Styled.Container
       onClick={() =>
-        navigate(`/post/${id}`, {state: [{title, body, id, userId}]})
+        navigate(`/post/${id}`, {state: {title, body, id, userId}})
       }
     >
       <Styled.AdditionalInfo>Bitcoin Cryptocurrency</Styled.AdditionalInfo>
       <Styled.Wrapper>
         <Styled.IconWrapper>
-          <Styled.Icon></Styled.Icon>
+          <Styled.Icon src="https://i.pravatar.cc/100" />
+            
+         
         </Styled.IconWrapper>
         <Styled.MainContent>
           <Styled.Title>{title}</Styled.Title>
@@ -72,11 +74,11 @@ const Styled = {
     flex: 1;
     padding: 10px;
   `,
-  Icon: styled.div`
+  Icon: styled.img`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: red;
+    
   `,
   MainContent: styled.div`
     display: flex;

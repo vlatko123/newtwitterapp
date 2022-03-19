@@ -4,7 +4,9 @@ import styled from 'styled-components';
 interface Props {
   backgroundColor: string;
   textColor: string;
+  padding?: string;
   name?: string;
+  type?:  React.HTMLProps<HTMLButtonElement>['type'];
   onClick?: () => void;
 }
 
@@ -12,12 +14,23 @@ export const Button = ({
   name,
   backgroundColor,
   textColor = 'grey',
+  padding,
   onClick,
-}: Props) => {
+  type,
+  ...rest
+}: React.HTMLProps<HTMLButtonElement> & Props) => {
   return (
+    //@ts-ignore
     <Styled.ButtonWrapper
+    //@ts-ignore
+      type={type}
+      {...rest}
       onClick={onClick}
-      style={{backgroundColor: backgroundColor, color: textColor}}
+      style={{
+        backgroundColor: backgroundColor,
+        color: textColor,
+        padding: padding,
+      }}
     >
       {name}
     </Styled.ButtonWrapper>
@@ -25,11 +38,10 @@ export const Button = ({
 };
 
 const Styled = {
-  ButtonWrapper: styled.div`
+  ButtonWrapper: styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    padding: 15px 30px;
+    border-radius: 15px;
   `,
 };
