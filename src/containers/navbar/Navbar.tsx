@@ -38,7 +38,6 @@ export const Navbar = () => {
 
 const Styled = {
   Container: styled.nav`
-    height: 100vh;
     border-right: 1px solid white;
   `,
 };
