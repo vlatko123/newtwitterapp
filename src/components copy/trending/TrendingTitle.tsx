@@ -2,10 +2,10 @@ import React from 'react';
 import {FaCog} from 'react-icons/fa';
 import styled from 'styled-components';
 
-export const TrendingTitle = () => {
+export const TrendingTitle = ({title}: any) => {
   return (
     <Styled.Container>
-      <Styled.Heading>Trends for you</Styled.Heading>
+      <Styled.Heading>{title}</Styled.Heading>
       <Styled.Span>
         <FaCog />
       </Styled.Span>

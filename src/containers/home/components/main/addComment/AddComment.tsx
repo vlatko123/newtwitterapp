@@ -1,4 +1,4 @@
-import {Button} from 'src/components copy/button/Button';
+import {Button} from '../../../../../components copy/button/Button';
 import styled from 'styled-components';
 import {FiImage} from 'react-icons/fi';
 import {RiFileGifLine} from 'react-icons/ri';
@@ -6,17 +6,17 @@ import {BiPoll} from 'react-icons/bi';
 import {BsEmojiSmile} from 'react-icons/bs';
 import {AiOutlineSchedule} from 'react-icons/ai';
 import {GoLocation} from 'react-icons/go';
-import {usePostTweet} from 'src/hooks/usePostTweet';
-import type {Posts} from '../types';
+import {usePostComment} from '../../../../../hooks/usePostComment';
+import type {Comments} from '../../../commentTypes';
 import {useForm} from 'react-hook-form';
 
 interface Props {
-  addNewTweet: (post: Posts) => void;
+  addNewComment: (comment: Comments) => void;
 }
 
-export const AddTweet = ({addNewTweet}: Props) => {
-  const {tweet, error, loading, setTweet, postTweet} =
-    usePostTweet(addNewTweet);
+export const AddComment = ({addNewComment}: Props) => {
+  const {comment, error, loading, setComment, postComment} =
+    usePostComment(addNewComment);
 
   const {
     register,
@@ -30,13 +30,13 @@ export const AddTweet = ({addNewTweet}: Props) => {
   }
 
   if (loading) {
-    return (<div style={{color: 'white'}}>Loading...</div>);
+    return <div style={{color: 'white'}}>Loading...</div>;
   }
 
   console.log('error' + typeof errors);
 
   const onSubmit = (data: any) => {
-    postTweet();
+    postComment();
   };
 
   return (
@@ -46,9 +46,9 @@ export const AddTweet = ({addNewTweet}: Props) => {
         <Styled.TextArea
           {...register('tweet', {required: 'u must fill the input'})}
           max-length={140}
-          value={tweet}
-          onChange={event => setTweet(event.target.value)}
-          placeholder="What's happening"
+          value={comment}
+          onChange={event => setComment(event.target.value)}
+          placeholder="Tweet your reply"
         ></Styled.TextArea>
         <Styled.ActionsWrapper>
           <Styled.IconWrapper>
@@ -78,7 +78,7 @@ export const AddTweet = ({addNewTweet}: Props) => {
               textColor="white"
               name="Tweet"
               padding="5px 20px"
-              onClick={postTweet}
+              onClick={postComment}
               disabled={Object.keys(errors).length > 0 ? true : false}
             />
           </div>

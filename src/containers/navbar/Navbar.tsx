@@ -10,6 +10,7 @@ import {FaEnvelope} from 'react-icons/fa';
 import {FaBookmark} from 'react-icons/fa';
 import {FaRegListAlt} from 'react-icons/fa';
 import {FaUser} from 'react-icons/fa';
+import { HiOutlineDotsCircleHorizontal } from "react-icons/hi";
 
 export const Navbar = () => {
   return (
@@ -22,13 +23,13 @@ export const Navbar = () => {
       <NavbarLink to="/bookmarks" text="Bookmarks" icon={<FaBookmark />} />
       <NavbarLink to="/lists" text="Lists" icon={<FaRegListAlt />} />
       <NavbarLink to="/profile" text="Profile" icon={<FaUser />} />
-      <NavbarLink to="/more" text="More" icon={<FaEnvelope />} />
+      <NavbarLink to="/more" text="More" icon={<HiOutlineDotsCircleHorizontal />} />
 
       <Button
         name="Twitter"
         backgroundColor="RGB(29, 155, 240)"
         textColor="white"
-        padding = "15px 30px"
+        padding= '15px 30px'
       />
     </Styled.Container>
   );
@@ -38,7 +39,6 @@ export const Navbar = () => {
 
 const Styled = {
   Container: styled.nav`
-    height: 100vh;
     border-right: 1px solid white;
   `,
 };

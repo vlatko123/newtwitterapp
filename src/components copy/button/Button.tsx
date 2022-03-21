@@ -6,7 +6,7 @@ interface Props {
   textColor: string;
   padding?: string;
   name?: string;
-  type?:  React.HTMLProps<HTMLButtonElement>['type'];
+  type?: React.HTMLProps<HTMLButtonElement>['type'];
   onClick?: () => void;
 }
 
@@ -22,7 +22,7 @@ export const Button = ({
   return (
     //@ts-ignore
     <Styled.ButtonWrapper
-    //@ts-ignore
+      //@ts-ignore
       type={type}
       {...rest}
       onClick={onClick}
@@ -39,9 +39,12 @@ export const Button = ({
 
 const Styled = {
   ButtonWrapper: styled.button`
+    width: 100%;
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+    border: none;
   `,
 };

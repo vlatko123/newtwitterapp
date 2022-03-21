@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  actionNumber?: number;
+  title: string;
   icon?: JSX.Element;
 }
 
-export const Action = ({ icon, actionNumber}: Props) => {
+export const Heading = ({title, icon}: Props) => {
   return (
     <Styled.Container>
-      <Styled.Number>{icon}</Styled.Number>
-      <Styled.Icon>{actionNumber}</Styled.Icon>
+      <Styled.H>{title}</Styled.H>
+      <span>{icon}</span>
     </Styled.Container>
   );
 };
@@ -18,17 +18,12 @@ export const Action = ({ icon, actionNumber}: Props) => {
 const Styled = {
   Container: styled.div`
     display: flex;
-    color: white;
     justify-content: space-between;
     align-items: center;
-    &:hover{
-      color: rgb(29, 155, 240)
-    }
+    color: white;
+    padding: 15px;
   `,
-  Icon: styled.div`
-  padding: 5px;
-  `,
-  Number: styled.div`
-
+  H: styled.h4`
+    margin: 0;
   `,
 };

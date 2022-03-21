@@ -6,7 +6,7 @@ import {TrendingTitle} from './TrendingTitle';
 export const Trending = () => {
   return (
     <Styled.Container>
-      <TrendingTitle />
+      <TrendingTitle title="Trends for you" />
       <TrendingNews />
     </Styled.Container>
   );

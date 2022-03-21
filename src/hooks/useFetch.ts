@@ -15,11 +15,10 @@ export const useFetch = <T>(url: string, initialState: Posts[]): Props<T> => {
     const data = await response.json();
     setData(data);
   };
-
+  
   const addNewTweet = (post: Posts) => {
     setData(prevState => [post, ...prevState]);
   };
-  
 
   return {data, fetchFromApi, addNewTweet};
 };

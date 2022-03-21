@@ -2,14 +2,17 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {Action} from '../posts/components/Action';
+import {FaRegComment, FaRegHeart, FaRetweet} from "react-icons/fa";
+import { FiShare } from "react-icons/fi";
 // import type {Posts} from '../../types';
 
 //interface Props explains what type will be sent through props
 interface Props {
-  title: string;
-  body: string;
-  id: number;
-  userId: number;
+  title?: string;
+  body?: string;
+  id?: number;
+  userId?: number;
+  name?: string;
   //or if we're using spread operator ...post then we can assign what kind of elements will appear:
   // post: Posts
 }
@@ -36,10 +39,10 @@ export const Post = ({title, body, id, userId}: Props) => {
           <Styled.Title>{title}</Styled.Title>
           <Styled.Content>{body}</Styled.Content>
           <Styled.Actions>
-            <Action actionNumber={4444} /> <Action actionNumber={4444} />
-            <Action actionNumber={3526} />
-            <Action actionNumber={4678} />
-            <Action actionNumber={4444} />
+            <Action icon={<FaRegComment/>} actionNumber={2} /> 
+            <Action icon ={<FaRetweet />} actionNumber={3526} />
+            <Action icon={<FaRegHeart/>} actionNumber={4678} />
+            <Action  icon={<FiShare />} actionNumber={4444} />
           </Styled.Actions>
         </Styled.MainContent>
       </Styled.Wrapper>
@@ -51,15 +54,19 @@ const Styled = {
   Container: styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid white;
+    border-top: 1px solid rgb(32, 35, 39);
+    border-bottom: 1px solid rgb(32, 35, 39);
     justify-content: center;
     align-item: center;
     width: 100%;
-    margin-bottom: 20px;
+    padding: 10px;
+    &:hover{
+      background: rgba(32, 35, 39, 0.2)
+    }
+
   `,
   AdditionalInfo: styled.span`
     width: 100%;
-    border: 1px solid white;
     color: white;
     padding: 5px;
   `,
@@ -84,7 +91,6 @@ const Styled = {
     display: flex;
     flex: 10;
     flex-direction: column;
-    border: 1px solid yellow;
     padding: 10px;
   `,
   Title: styled.h4`
