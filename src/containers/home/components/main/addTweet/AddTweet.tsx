@@ -21,7 +21,6 @@ export const AddTweet = ({addNewTweet}: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: {errors},
   } = useForm();
 
@@ -30,13 +29,21 @@ export const AddTweet = ({addNewTweet}: Props) => {
   }
 
   if (loading) {
-    return (<div style={{color: 'white'}}>Loading...</div>);
+    return <div style={{color: 'white'}}>Loading...</div>;
   }
 
   console.log('error' + typeof errors);
 
   const onSubmit = (data: any) => {
     postTweet();
+  };
+
+  const disabledBtn = (tweet: string) => {
+    if (tweet.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   return (
@@ -54,19 +61,19 @@ export const AddTweet = ({addNewTweet}: Props) => {
           <Styled.IconWrapper>
             <Styled.Icon>
               <FiImage color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <RiFileGifLine color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <BiPoll color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <BsEmojiSmile color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <AiOutlineSchedule color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <GoLocation color="rgb(29, 155, 240)" />
             </Styled.Icon>
@@ -79,7 +86,7 @@ export const AddTweet = ({addNewTweet}: Props) => {
               name="Tweet"
               padding="5px 20px"
               onClick={postTweet}
-              disabled={Object.keys(errors).length > 0 ? true : false}
+              disabled={disabledBtn(tweet)}
             />
           </div>
         </Styled.ActionsWrapper>
@@ -118,9 +125,9 @@ const Styled = {
     color: white;
     resize: none;
     border: none;
-    padding: 10px 0 10px 0;
+    padding: 10px 0;
     &::placeholder {
-      padding: 10px 0 10px 0;
+      padding: 10px 0;
     }
   `,
   ActionsWrapper: styled.div`

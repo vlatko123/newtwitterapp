@@ -1,13 +1,10 @@
 import {useState} from 'react';
 import type {Comments} from '../containers/home/commentTypes';
 
-
 export const usePostComment = (addNewComment: (comment: Comments) => void) => {
   const [comment, setComment] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
-
-  console.log(comment);
 
   const postComment = async () => {
     setLoading(true);

@@ -2,7 +2,11 @@ import React from 'react';
 import {FaCog} from 'react-icons/fa';
 import styled from 'styled-components';
 
-export const TrendingTitle = ({title}: any) => {
+interface Props {
+  title: string;
+}
+
+export const TrendingTitle = ({title}: Props) => {
   return (
     <Styled.Container>
       <Styled.Heading>{title}</Styled.Heading>

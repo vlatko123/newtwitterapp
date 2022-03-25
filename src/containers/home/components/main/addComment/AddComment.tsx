@@ -21,31 +21,37 @@ export const AddComment = ({addNewComment}: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: {errors},
-  } = useForm();
+  } = useForm({mode: 'onChange'});
 
   if (error) {
-    return <div>There is some mistake</div>;
+    return <div>{error}</div>;
   }
 
   if (loading) {
     return <div style={{color: 'white'}}>Loading...</div>;
   }
 
-  console.log('error' + typeof errors);
-
   const onSubmit = (data: any) => {
     postComment();
   };
+  const disabledBtn = (comment: string) => {
+    if (comment.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  console.log('errors' + errors);
 
   return (
     <Styled.Container>
       <Styled.Avatar src="https://i.pravatar.cc/100?img=52" />
       <Styled.Form onSubmit={handleSubmit(onSubmit)}>
         <Styled.TextArea
-          {...register('tweet', {required: 'u must fill the input'})}
-          max-length={140}
+          {...register('tweet', {required: true})}
+          maxLength={140}
           value={comment}
           onChange={event => setComment(event.target.value)}
           placeholder="Tweet your reply"
@@ -54,19 +60,19 @@ export const AddComment = ({addNewComment}: Props) => {
           <Styled.IconWrapper>
             <Styled.Icon>
               <FiImage color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <RiFileGifLine color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <BiPoll color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <BsEmojiSmile color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <AiOutlineSchedule color="rgb(29, 155, 240)" />
-            </Styled.Icon>{' '}
+            </Styled.Icon>
             <Styled.Icon>
               <GoLocation color="rgb(29, 155, 240)" />
             </Styled.Icon>
@@ -79,7 +85,7 @@ export const AddComment = ({addNewComment}: Props) => {
               name="Tweet"
               padding="5px 20px"
               onClick={postComment}
-              disabled={Object.keys(errors).length > 0 ? true : false}
+              disabled={disabledBtn(comment)}
             />
           </div>
         </Styled.ActionsWrapper>

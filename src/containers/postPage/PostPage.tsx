@@ -16,7 +16,6 @@ export const PostPage = (props: any) => {
   const params = useParams();
   const location = useLocation();
   const state = location?.state;
-  console.log(state);
 
   const {data, fetchFromApi} = useFetch<Posts[]>(
     `posts/${params.id}`,
@@ -25,7 +24,6 @@ export const PostPage = (props: any) => {
 
   useEffect(() => {
     if (!(location?.state as any)?.id) {
-      console.log('test' + (location?.state as any));
       fetchFromApi();
     }
   }, [params.id]);
@@ -38,8 +36,6 @@ export const PostPage = (props: any) => {
   useEffect(() => {
     fetchComments();
   }, [params.id]);
-
-  console.log(comment);
 
   return (
     <Styled.Container className="col-6">

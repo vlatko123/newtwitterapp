@@ -2,8 +2,8 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {Action} from '../posts/components/Action';
-import {FaRegComment, FaRegHeart, FaRetweet} from "react-icons/fa";
-import { FiShare } from "react-icons/fi";
+import {FaRegComment, FaRegHeart, FaRetweet} from 'react-icons/fa';
+import {FiShare} from 'react-icons/fi';
 // import type {Posts} from '../../types';
 
 //interface Props explains what type will be sent through props
@@ -32,17 +32,15 @@ export const Post = ({title, body, id, userId}: Props) => {
       <Styled.Wrapper>
         <Styled.IconWrapper>
           <Styled.Icon src="https://i.pravatar.cc/100" />
-            
-         
         </Styled.IconWrapper>
         <Styled.MainContent>
           <Styled.Title>{title}</Styled.Title>
           <Styled.Content>{body}</Styled.Content>
           <Styled.Actions>
-            <Action icon={<FaRegComment/>} actionNumber={2} /> 
-            <Action icon ={<FaRetweet />} actionNumber={3526} />
-            <Action icon={<FaRegHeart/>} actionNumber={4678} />
-            <Action  icon={<FiShare />} actionNumber={4444} />
+            <Action icon={<FaRegComment />} actionNumber={0} />
+            <Action icon={<FaRetweet />} actionNumber={3526} />
+            <Action icon={<FaRegHeart />} actionNumber={4678} />
+            <Action icon={<FiShare />} actionNumber={4444} />
           </Styled.Actions>
         </Styled.MainContent>
       </Styled.Wrapper>
@@ -60,10 +58,9 @@ const Styled = {
     align-item: center;
     width: 100%;
     padding: 10px;
-    &:hover{
-      background: rgba(32, 35, 39, 0.2)
+    &:hover {
+      background: rgba(32, 35, 39, 0.2);
     }
-
   `,
   AdditionalInfo: styled.span`
     width: 100%;
@@ -85,7 +82,6 @@ const Styled = {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    
   `,
   MainContent: styled.div`
     display: flex;

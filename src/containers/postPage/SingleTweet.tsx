@@ -5,7 +5,7 @@ import {FiShare} from 'react-icons/fi';
 import styled from 'styled-components';
 
 export const SingleTweet = ({title, body}: any) => {
-  let date = new Date();
+  const date = new Date();
   return (
     <Styled.Container>
       <Styled.Title>
@@ -70,20 +70,20 @@ const Styled = {
     font-size: 20px;
   `,
   Actions: styled.div`
-  display: flex;
-  justify-content: flex-start;
-  padding: 20px;
-  border-bottom: 1px solid rgb(32, 35, 39);
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+    border-bottom: 1px solid rgb(32, 35, 39);
   `,
   ActionSpan: styled.span`
-  margin: 10px;
-  font-size: 20px;
-  color: rgb(32, 35, 39);
+    margin: 10px;
+    font-size: 20px;
+    color: rgb(32, 35, 39);
   `,
   Icon: styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 50px 20px 50px;
-  font-size: 25px;
-  `
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px 20px 50px;
+    font-size: 25px;
+  `,
 };
