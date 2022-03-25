@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const TrendingNewsHeader = ({newsTopic}: any) => {
+interface Props {
+  newsTopic: string;
+}
+
+export const TrendingNewsHeader = ({newsTopic}: Props) => {
   return (
     <Styled.Container>
       <div>

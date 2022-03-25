@@ -1,43 +1,29 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import {Action} from '../posts/components/Action';
+import {Action} from '../../containers/home/components/main/components/posts/components/Action';
 import {FaRegComment, FaRegHeart, FaRetweet} from 'react-icons/fa';
 import {FiShare} from 'react-icons/fi';
-// import type {Posts} from '../../types';
 
-//interface Props explains what type will be sent through props
 interface Props {
   title?: string;
   body?: string;
   id?: number;
   userId?: number;
   name?: string;
-  //or if we're using spread operator ...post then we can assign what kind of elements will appear:
-  // post: Posts
 }
 
-//single post which will be the same for all the posts fetched from API, This component will be imported in Main component
-export const Post = ({title, body, id, userId}: Props) => {
-  //storing useNavigate() into navigate cosnt. Inside useNavigate we have multiple options to navigate to some route
-  const navigate = useNavigate();
+export const Comment = ({name, body, id, userId}: Props) => {
   return (
-    //onClick event on the wrappper of the single post. Through props we will get id and we can navigate to the content of the clicked post
-    <Styled.Container
-      onClick={() =>
-        navigate(`/post/${id}`, {state: {title, body, id, userId}})
-      }
-    >
-      <Styled.AdditionalInfo>Bitcoin Cryptocurrency</Styled.AdditionalInfo>
+    <Styled.Container>
+      <Styled.AdditionalInfo>{name}</Styled.AdditionalInfo>
       <Styled.Wrapper>
         <Styled.IconWrapper>
           <Styled.Icon src="https://i.pravatar.cc/100" />
         </Styled.IconWrapper>
         <Styled.MainContent>
-          <Styled.Title>{title}</Styled.Title>
           <Styled.Content>{body}</Styled.Content>
           <Styled.Actions>
-            <Action icon={<FaRegComment />} actionNumber={0} />
+            <Action icon={<FaRegComment />} actionNumber={2} />
             <Action icon={<FaRetweet />} actionNumber={3526} />
             <Action icon={<FaRegHeart />} actionNumber={4678} />
             <Action icon={<FiShare />} actionNumber={4444} />
@@ -88,12 +74,6 @@ const Styled = {
     flex: 10;
     flex-direction: column;
     padding: 10px;
-  `,
-  Title: styled.h4`
-    margin: 0;
-    padding: 0;
-    color: white;
-    text-align: left;
   `,
   Content: styled.p`
     color: white;
