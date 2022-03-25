@@ -14,7 +14,6 @@ export const Search = () => {
 
 const Styled = {
   Container: styled.aside`
-    margin: 0 auto;
     border-left: 1px solid white;
   `,
 };
