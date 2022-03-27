@@ -1,3 +1,4 @@
+import React, {useContext} from 'react';
 import {Button} from 'src/components copy/button/Button';
 import styled from 'styled-components';
 import {FiImage} from 'react-icons/fi';
@@ -9,6 +10,7 @@ import {GoLocation} from 'react-icons/go';
 import {usePostTweet} from 'src/hooks/usePostTweet';
 import type {Posts} from '../types';
 import {useForm} from 'react-hook-form';
+import {ThemeContext} from '../../../../../context/Contexts';
 
 interface Props {
   addNewTweet: (post: Posts) => void;
@@ -24,6 +26,8 @@ export const AddTweet = ({addNewTweet}: Props) => {
     formState: {errors},
   } = useForm();
 
+  const {theme} = useContext(ThemeContext);
+
   if (error) {
     return <div>There is some mistake</div>;
   }
@@ -31,8 +35,6 @@ export const AddTweet = ({addNewTweet}: Props) => {
   if (loading) {
     return <div style={{color: 'white'}}>Loading...</div>;
   }
-
-  console.log('error' + typeof errors);
 
   const onSubmit = (data: any) => {
     postTweet();
@@ -51,6 +53,7 @@ export const AddTweet = ({addNewTweet}: Props) => {
       <Styled.Avatar src="https://i.pravatar.cc/100?img=52" />
       <Styled.Form onSubmit={handleSubmit(onSubmit)}>
         <Styled.TextArea
+          theme={theme}
           {...register('tweet', {required: 'u must fill the input'})}
           max-length={140}
           value={tweet}
@@ -113,16 +116,15 @@ const Styled = {
     display: flex;
     flex-direction: column;
     align-items: flex-start
-   
     height: 100px;
     width: 100%;
     margin-left: 10px;
     `,
-  TextArea: styled.textarea`
+  TextArea: styled.textarea<{theme: 'dark' | 'light'}>`
     width: 100%;
     height: 100%;
     background: transparent;
-    color: white;
+    color: ${props => (props.theme === 'light' ? 'white' : 'dark')};
     resize: none;
     border: none;
     padding: 10px 0;

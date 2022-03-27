@@ -1,3 +1,4 @@
+import React, {useContext} from 'react';
 import {Button} from '../../../../../components copy/button/Button';
 import styled from 'styled-components';
 import {FiImage} from 'react-icons/fi';
@@ -9,6 +10,7 @@ import {GoLocation} from 'react-icons/go';
 import {usePostComment} from '../../../../../hooks/usePostComment';
 import type {Comments} from '../../../commentTypes';
 import {useForm} from 'react-hook-form';
+import {ThemeContext} from '../../../../../context/Contexts';
 
 interface Props {
   addNewComment: (comment: Comments) => void;
@@ -23,6 +25,8 @@ export const AddComment = ({addNewComment}: Props) => {
     handleSubmit,
     formState: {errors},
   } = useForm({mode: 'onChange'});
+
+  const {theme} = useContext(ThemeContext);
 
   if (error) {
     return <div>{error}</div>;
@@ -43,13 +47,12 @@ export const AddComment = ({addNewComment}: Props) => {
     }
   };
 
-  console.log('errors' + errors);
-
   return (
     <Styled.Container>
       <Styled.Avatar src="https://i.pravatar.cc/100?img=52" />
       <Styled.Form onSubmit={handleSubmit(onSubmit)}>
         <Styled.TextArea
+          theme={theme}
           {...register('tweet', {required: true})}
           maxLength={140}
           value={comment}
@@ -112,21 +115,20 @@ const Styled = {
     display: flex;
     flex-direction: column;
     align-items: flex-start
-   
     height: 100px;
     width: 100%;
     margin-left: 10px;
     `,
-  TextArea: styled.textarea`
+  TextArea: styled.textarea<{theme: 'dark' | 'light'}>`
     width: 100%;
     height: 100%;
     background: transparent;
-    color: white;
+    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
     resize: none;
     border: none;
-    padding: 10px 0 10px 0;
+    padding: 10px 0;
     &::placeholder {
-      padding: 10px 0 10px 0;
+      padding: 10px 0;
     }
   `,
   ActionsWrapper: styled.div`
