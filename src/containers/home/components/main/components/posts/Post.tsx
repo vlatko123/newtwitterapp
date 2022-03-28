@@ -1,32 +1,28 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {Action} from '../posts/components/Action';
 import {FaRegComment, FaRegHeart, FaRetweet} from 'react-icons/fa';
 import {FiShare} from 'react-icons/fi';
-// import type {Posts} from '../../types';
+import {ThemeContext} from '../../../../../../context/Contexts';
 
-//interface Props explains what type will be sent through props
 interface Props {
   title?: string;
   body?: string;
   id?: number;
   userId?: number;
   name?: string;
-  //or if we're using spread operator ...post then we can assign what kind of elements will appear:
-  // post: Posts
 }
 
-//single post which will be the same for all the posts fetched from API, This component will be imported in Main component
 export const Post = ({title, body, id, userId}: Props) => {
-  //storing useNavigate() into navigate cosnt. Inside useNavigate we have multiple options to navigate to some route
   const navigate = useNavigate();
+  const {theme} = useContext(ThemeContext);
   return (
-    //onClick event on the wrappper of the single post. Through props we will get id and we can navigate to the content of the clicked post
     <Styled.Container
       onClick={() =>
         navigate(`/post/${id}`, {state: {title, body, id, userId}})
       }
+      theme={theme}
     >
       <Styled.AdditionalInfo>Bitcoin Cryptocurrency</Styled.AdditionalInfo>
       <Styled.Wrapper>
@@ -49,7 +45,7 @@ export const Post = ({title, body, id, userId}: Props) => {
 };
 
 const Styled = {
-  Container: styled.div`
+  Container: styled.div<{theme: 'dark' | 'light'}>`
     display: flex;
     flex-direction: column;
     border-top: 1px solid rgb(32, 35, 39);
@@ -58,13 +54,13 @@ const Styled = {
     align-item: center;
     width: 100%;
     padding: 10px;
+    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
     &:hover {
       background: rgba(32, 35, 39, 0.2);
     }
   `,
   AdditionalInfo: styled.span`
     width: 100%;
-    color: white;
     padding: 5px;
   `,
   Wrapper: styled.div`
@@ -92,12 +88,9 @@ const Styled = {
   Title: styled.h4`
     margin: 0;
     padding: 0;
-    color: white;
     text-align: left;
   `,
-  Content: styled.p`
-    color: white;
-  `,
+  Content: styled.p``,
   Actions: styled.div`
     display: flex;
     flex-direction: row;

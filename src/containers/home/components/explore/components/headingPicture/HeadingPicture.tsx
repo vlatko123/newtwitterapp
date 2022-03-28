@@ -17,15 +17,11 @@ export const HeadingPicture = () => {
         'https://jsonplaceholder.typicode.com/photos/1'
       );
       const data = await response.json();
-      //   setPhotoId(photoId => photoId + 1)
+
       setState(data);
     };
 
-    // const interval = setInterval(() => {
     fetchFromApi();
-
-    // }, 5000);
-    // return () => clearInterval(interval);
   }, []);
   return (
     <Styled.Container>

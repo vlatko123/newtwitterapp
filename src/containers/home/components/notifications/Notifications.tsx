@@ -15,7 +15,7 @@ export const Notifications = () => {
           <Link to="all">All</Link>
           <Link to="mentions">Mentions</Link>
         </Styled.Nav>
-      <Outlet />
+        <Outlet />
       </Styled.Container>
     </div>
   );
@@ -26,6 +26,7 @@ const Styled = {
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: 100vh;
   `,
   Header: styled.header`
     display: flex;
@@ -39,9 +40,9 @@ const Styled = {
     color: white;
   `,
   Nav: styled.nav`
-  display: flex;
-  justify-content: space-evenly;
-  border-bottom: 1px solid white;
-  padding-bottom: 1rem;
-  `
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid white;
+    padding-bottom: 1rem;
+  `,
 };

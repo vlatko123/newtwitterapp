@@ -27,7 +27,7 @@ export const usePostTweet = (addNewTweet: (post: Posts) => void) => {
       );
 
       const data = await response.json();
-      // console.log('response', data);
+
       addNewTweet(data);
     } catch (error: any) {
       setError(error.message);
