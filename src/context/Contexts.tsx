@@ -12,7 +12,6 @@ export const ContextsConstructor = ({children}: {children: JSX.Element}) => {
 
   const changeTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
-    console.log("dark" + theme)
   };
   return (
     <ThemeContext.Provider value={{theme: theme, changeTheme: changeTheme}}>

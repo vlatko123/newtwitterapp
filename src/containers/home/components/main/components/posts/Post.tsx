@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import {Action} from '../posts/components/Action';
@@ -16,7 +16,7 @@ interface Props {
 
 export const Post = ({title, body, id, userId}: Props) => {
   const navigate = useNavigate();
-  const {theme} =useContext(ThemeContext)
+  const {theme} = useContext(ThemeContext);
   return (
     <Styled.Container
       onClick={() =>
@@ -45,7 +45,7 @@ export const Post = ({title, body, id, userId}: Props) => {
 };
 
 const Styled = {
-  Container: styled.div<{theme: "dark" | "light"}>`
+  Container: styled.div<{theme: 'dark' | 'light'}>`
     display: flex;
     flex-direction: column;
     border-top: 1px solid rgb(32, 35, 39);
@@ -54,7 +54,7 @@ const Styled = {
     align-item: center;
     width: 100%;
     padding: 10px;
-    color: ${props => (props.theme === "light" ? "white" : "black")};
+    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
     &:hover {
       background: rgba(32, 35, 39, 0.2);
     }

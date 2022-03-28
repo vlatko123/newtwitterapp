@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Navbar} from '../src/containers/navbar/Navbar';
 import {Search} from '../src/containers/search/Search';
 import {RoutesComponent} from './state/RoutesComponent';
 import './App.css';
 import styled from 'styled-components';
-import {useContext} from 'react';
 import {ThemeContext} from '../src/context/Contexts';
 
 function App() {
