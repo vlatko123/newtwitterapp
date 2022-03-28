@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import {useFetch} from '../../hooks/useFetch';
 import type {Posts} from '../home/components/main/types';
@@ -10,14 +10,12 @@ import {FaArrowLeft} from 'react-icons/fa';
 import {useFetchComments} from 'src/hooks/useFetchComments';
 import {Comment} from '../../containers/postPage/Comment';
 import {AddComment} from '../home/components/main/addComment/AddComment';
-import {ThemeContext} from '../../context/Contexts';
 
 export const PostPage = (props: any) => {
   const navigate = useNavigate();
   const params = useParams();
   const location = useLocation();
   const state = location?.state;
-  const {theme} = useContext(ThemeContext);
 
   const {data, fetchFromApi} = useFetch<Posts[]>(
     `posts/${params.id}`,
@@ -40,7 +38,7 @@ export const PostPage = (props: any) => {
   }, [params.id]);
 
   return (
-    <Styled.Container theme={theme} className="col-6">
+    <Styled.Container className="col-6">
       <Styled.HeadingWrapper>
         <Styled.SpanWrapper onClick={() => navigate('/')}>
           <FaArrowLeft />
@@ -57,10 +55,10 @@ export const PostPage = (props: any) => {
 };
 
 const Styled = {
-  Container: styled.div<{theme: 'dark' | 'light'}>`
+  Container: styled.div`
     max-width: 100%;
     padding: 0;
-    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
+    color: ${props => props.theme.color};
   `,
   HeadingWrapper: styled.div`
     display: flex;

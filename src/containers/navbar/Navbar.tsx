@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {Button} from 'src/components copy/button/Button';
 import {NavbarLink} from 'src/components copy/NavbarLink/NavbarLink';
@@ -11,12 +11,10 @@ import {FaBookmark} from 'react-icons/fa';
 import {FaRegListAlt} from 'react-icons/fa';
 import {FaUser} from 'react-icons/fa';
 import {HiOutlineDotsCircleHorizontal} from 'react-icons/hi';
-import {ThemeContext} from '../../context/Contexts';
 
 export const Navbar = () => {
-  const {theme} = useContext(ThemeContext);
   return (
-    <Styled.Container theme={theme} className="col-3">
+    <Styled.Container className="col-3">
       <NavbarLink to="/" text="" icon={<FaTwitter />} />
       <NavbarLink to="/home" text="Home" icon={<FaHome />} />
       <NavbarLink to="/explore" text="Explore" icon={<FaHashtag />} />
@@ -42,8 +40,7 @@ export const Navbar = () => {
 };
 
 const Styled = {
-  Container: styled.nav<{theme: 'dark' | 'light'}>`
-    border-right: 1px solid
-      ${props => (props.theme === 'light' ? 'white' : 'black')};
+  Container: styled.nav`
+    border-right: 1px solid ${props => props.theme.color};
   `,
 };

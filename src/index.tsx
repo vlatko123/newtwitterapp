@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
-import {ContextsConstructor} from '../src/context/Contexts';
+import {ContextsConstructor} from './context/Contexts';
 
 ReactDOM.render(
   <React.StrictMode>
