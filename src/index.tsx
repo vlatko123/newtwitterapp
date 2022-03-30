@@ -6,14 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
 import {ContextsConstructor} from '../src/context/Contexts';
+import { TweetsContextsConstructor } from './context/TweetsContext';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContextsConstructor>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ContextsConstructor>
+    <BrowserRouter>
+      <ContextsConstructor>
+        <TweetsContextsConstructor>
+          <App />
+        </TweetsContextsConstructor>
+      </ContextsConstructor>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
