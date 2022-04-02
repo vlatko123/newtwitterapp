@@ -12,9 +12,11 @@ import {FaRegListAlt} from 'react-icons/fa';
 import {FaUser} from 'react-icons/fa';
 import {HiOutlineDotsCircleHorizontal} from 'react-icons/hi';
 import {ThemeContext} from '../../context/Contexts';
+import {AuthContext} from '../../context/AuthContext';
 
 export const Navbar = () => {
   const {theme} = useContext(ThemeContext);
+  const {logout} = useContext(AuthContext);
   return (
     <Styled.Container theme={theme} className="col-3">
       <NavbarLink to="/" text="" icon={<FaTwitter />} />
@@ -36,6 +38,12 @@ export const Navbar = () => {
         backgroundColor="RGB(29, 155, 240)"
         textColor="white"
         padding="15px 30px"
+      />
+      <Button
+        backgroundColor="RGB(29, 155, 240)"
+        textColor="white"
+        name="Logout"
+        onClick={logout}
       />
     </Styled.Container>
   );

@@ -11,6 +11,7 @@ import {useFetchComments} from 'src/hooks/useFetchComments';
 import {Comment} from '../../containers/postPage/Comment';
 import {AddComment} from '../home/components/main/addComment/AddComment';
 import {ThemeContext} from '../../context/Contexts';
+import {PageWrapper} from 'src/components copy/pageWrapper/PageWrapper';
 
 export const PostPage = (props: any) => {
   const navigate = useNavigate();
@@ -40,19 +41,21 @@ export const PostPage = (props: any) => {
   }, [params.id]);
 
   return (
-    <Styled.Container theme={theme} className="col-6">
-      <Styled.HeadingWrapper>
-        <Styled.SpanWrapper onClick={() => navigate('/')}>
-          <FaArrowLeft />
-        </Styled.SpanWrapper>
-        <Heading title="Tweet" />
-      </Styled.HeadingWrapper>
-      <SingleTweet title={(state as any).title} body={(state as any).body} />
-      <AddComment addNewComment={addNewComment} />
-      {comment?.map(com => {
-        return <Comment key={com.id} name={com.name} body={com.body} />;
-      })}
-    </Styled.Container>
+    <PageWrapper>
+      <Styled.Container theme={theme} className="col-6">
+        <Styled.HeadingWrapper>
+          <Styled.SpanWrapper onClick={() => navigate('/')}>
+            <FaArrowLeft />
+          </Styled.SpanWrapper>
+          <Heading title="Tweet" />
+        </Styled.HeadingWrapper>
+        <SingleTweet title={(state as any).title} body={(state as any).body} />
+        <AddComment addNewComment={addNewComment} />
+        {comment?.map(com => {
+          return <Comment key={com.id} name={com.name} body={com.body} />;
+        })}
+      </Styled.Container>
+    </PageWrapper>
   );
 };
 

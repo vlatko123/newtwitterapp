@@ -8,12 +8,21 @@ import {Mentions} from '../containers/home/components/notifications/Mentions';
 import styled from 'styled-components';
 import {More} from '../containers/home/components/more/More';
 import {Display} from '../containers/home/components/more/Display';
+import {ProtectedRoute} from './ProtectedRoute';
+import {LoginPage} from '../containers/Login/LoginPage';
 
 export const RoutesComponent = () => {
   return (
-    <Styled.Container className="col-6">
+    <Styled.Container className="row">
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Main />
+            </ProtectedRoute>
+          }
+        />
         <Route path="post/:id" element={<PostPage />} />
         <Route path="/home" element={<Main />} />
         <Route path="explore" element={<Explore />} />
@@ -28,6 +37,7 @@ export const RoutesComponent = () => {
         <Route path="more" element={<More />}>
           <Route path="display" element={<Display />} />
         </Route>
+        <Route path="login" element={<LoginPage />} />
         <Route
           path="*"
           element={<div style={{color: 'white'}}>This page doesn't exist</div>}
