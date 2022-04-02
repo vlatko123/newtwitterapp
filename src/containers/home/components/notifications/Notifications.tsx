@@ -2,11 +2,12 @@ import React from 'react';
 import {Link, Outlet} from 'react-router-dom';
 import styled from 'styled-components';
 import {Settings} from '../explore/components/searchinput/Settings';
+import {PageWrapper} from '../../../../components copy/pageWrapper/PageWrapper';
 
 export const Notifications = () => {
   return (
-    <div>
-      <Styled.Container>
+    <PageWrapper>
+      <Styled.Container className="col-6">
         <Styled.Header>
           <Styled.Heading>Notifications</Styled.Heading>
           <Settings />
@@ -17,7 +18,7 @@ export const Notifications = () => {
         </Styled.Nav>
         <Outlet />
       </Styled.Container>
-    </div>
+    </PageWrapper>
   );
 };
 
@@ -40,6 +41,7 @@ const Styled = {
     color: white;
   `,
   Nav: styled.nav`
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
     border-bottom: 1px solid white;

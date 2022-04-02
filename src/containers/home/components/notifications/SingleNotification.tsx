@@ -11,7 +11,6 @@ export const SingleNotification = ({
   notificationHeading,
   notificationContent,
 }: Props) => {
-  console.log(notificationHeading);
   return (
     <Styled.Container>
       <Styled.Icon>
@@ -54,7 +53,6 @@ const Styled = {
     flex-direction: column;
     flex: 10;
     padding: 10px;
-
   `,
   DotsWrapper: styled.div`
     width: 50px;
