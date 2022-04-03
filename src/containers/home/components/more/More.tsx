@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link, Outlet} from 'react-router-dom';
 import {Heading} from 'src/components copy/heading/Heading';
+import {ThemeContext} from '../../../../context/Contexts';
+import {PageWrapper} from '../../../../components copy/pageWrapper/PageWrapper';
 
 export const More = () => {
   return (
@@ -10,11 +12,21 @@ export const More = () => {
       <Styled.DisplayLink to="display">Display</Styled.DisplayLink>
       <Outlet />
     </Styled.Container>
+    <PageWrapper>
+      <Styled.Container className="col-6">
+        <Heading title="More" />
+        <Styled.DisplayLink theme={theme} to="display">
+          Display
+        </Styled.DisplayLink>
+        <Outlet />
+      </Styled.Container>
+    </PageWrapper>
   );
 };
 
 const Styled = {
   Container: styled.div`
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;

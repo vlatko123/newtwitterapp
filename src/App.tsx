@@ -1,6 +1,4 @@
 import React, {useContext} from 'react';
-import {Navbar} from '../src/containers/navbar/Navbar';
-import {Search} from '../src/containers/search/Search';
 import {RoutesComponent} from './state/RoutesComponent';
 import './App.css';
 import styled, {ThemeProvider} from 'styled-components';
@@ -22,6 +20,11 @@ function App() {
               <Search />
             </div>
           </div>
+    <Styled.Container theme={theme} className="container-fluid">
+      <div className="row">
+        <div className="container">
+          {/*whole app goes down here */}
+          <RoutesComponent />
         </div>
       </Styled.Container>
     </ThemeProvider>

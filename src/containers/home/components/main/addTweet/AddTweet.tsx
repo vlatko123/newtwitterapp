@@ -8,16 +8,11 @@ import {BsEmojiSmile} from 'react-icons/bs';
 import {AiOutlineSchedule} from 'react-icons/ai';
 import {GoLocation} from 'react-icons/go';
 import {usePostTweet} from 'src/hooks/usePostTweet';
-import type {Posts} from '../types';
 import {useForm} from 'react-hook-form';
 
-interface Props {
-  addNewTweet: (post: Posts) => void;
-}
-
-export const AddTweet = ({addNewTweet}: Props) => {
-  const {tweet, error, loading, setTweet, postTweet} =
-    usePostTweet(addNewTweet);
+export const AddTweet = () => {
+  const {theme} = useContext(ThemeContext);
+  const {tweet, error, loading, postTweet, setTweet} = usePostTweet();
 
   const {
     register,
@@ -51,7 +46,7 @@ export const AddTweet = ({addNewTweet}: Props) => {
       <Styled.Form onSubmit={handleSubmit(onSubmit)}>
         <Styled.TextArea
           {...register('tweet', {required: 'u must fill the input'})}
-          max-length={140}
+          maxLength={140}
           value={tweet}
           onChange={event => setTweet(event.target.value)}
           placeholder="What's happening"
