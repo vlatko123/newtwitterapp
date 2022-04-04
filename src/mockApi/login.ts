@@ -43,3 +43,19 @@ export const logoutApi = ({
     }
   });
 };
+
+export const getUserApi = ({
+  username,
+  password,
+}: {
+  username: string;
+  password: string;
+}): Promise<{username: string | undefined; password: string | undefined}> => {
+  return new Promise((resolve, reject) => {
+    resolve({
+      username: username,
+      password: password,
+    });
+    reject('there is no username and password');
+  });
+};

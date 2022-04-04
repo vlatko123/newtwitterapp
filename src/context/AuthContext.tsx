@@ -4,7 +4,12 @@ import {
   readFromStorage,
   removeFromStorage,
 } from '../utils/localStorage';
-import {CustomLoginError, loginApi, logoutApi} from '../mockApi/login';
+import {
+  CustomLoginError,
+  getUserApi,
+  loginApi,
+  logoutApi,
+} from '../mockApi/login';
 import {LocalStorageConstants} from '../constants/Constants';
 
 interface User {
@@ -15,6 +20,7 @@ interface User {
 interface ContextValues {
   login: ({username, password}: User) => void;
   logout: () => void;
+  getUser: ({username, password}: User) => void;
   error: string;
   loading: boolean;
   userIsLoggedIn?: boolean;
@@ -25,6 +31,7 @@ export const AuthContext = React.createContext<ContextValues>({
   user: undefined,
   login: () => {},
   logout: () => {},
+  getUser: () => {},
   error: '',
   loading: false,
   userIsLoggedIn: false,
@@ -69,7 +76,7 @@ type Action =
       payload: {
         loading: false;
         error: '';
-        user: User;
+        user: User | any;
         userIsLoggedIn: true;
       };
     }
@@ -170,6 +177,20 @@ export const AuthContextsConstructor = ({
 }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
+  const getUser = async ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await getUserApi({username, password});
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     dispatch({
       type: ActionEnum.LOADING,
@@ -184,7 +205,7 @@ export const AuthContextsConstructor = ({
         dispatch({
           type: ActionEnum.LOGIN_SUCCESS,
           payload: {
-            user: {username: 'domasna', password: 'domasna'},
+            user: getUser,
             userIsLoggedIn: true,
             loading: false,
             error: '',
@@ -202,7 +223,6 @@ export const AuthContextsConstructor = ({
         });
       }
     }, 1000);
-
     return () => {
       clearTimeout(timeout);
     };
@@ -294,19 +314,6 @@ export const AuthContextsConstructor = ({
     }
   };
 
-  //homework
-  // export const getUserApi = ({}) => {
-  //#1 domasna napravi mockApi slicno na toa za login sto ke vraka nekoj mock user
-  // }
-
-  // export const registerMockApi =({}) => {
-  //#2 da se napravi register page na koj ke vnesuvame podatoci i istite ke gi zacuvame vo local storage. Userot mora da e avtomatski logiran
-  // }
-
-  //#3 logout button
-
-  //#4 na registriraniot user treba da mu napravime dizajn za profilot kade sto moze da smeniime password
-
   return (
     <AuthContext.Provider
       value={{
@@ -316,6 +323,7 @@ export const AuthContextsConstructor = ({
         loading: state.loading,
         userIsLoggedIn: state.userIsLoggedIn,
         logout,
+        getUser,
       }}
     >
       {children}
