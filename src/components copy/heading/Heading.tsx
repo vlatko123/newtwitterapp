@@ -12,7 +12,7 @@ export const Heading = ({title, icon}: Props) => {
   const {theme} = useContext(ThemeContext);
   return (
     <Styled.Container theme={theme}>
-      <Styled.H >{title}</Styled.H>
+      <Styled.H>{title}</Styled.H>
       <span>{icon}</span>
     </Styled.Container>
   );
@@ -23,7 +23,7 @@ const Styled = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: ${props => (props.theme === 'light' ? 'white' : 'black')};;
+    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
     padding: 15px;
   `,
   H: styled.h4`
