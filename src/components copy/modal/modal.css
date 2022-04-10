@@ -1,0 +1,8 @@
+.modal-content {
+    background-color: black !important;
+}
+
+.modal-title {
+    display: flex;
+    justify-content: space-between;
+}

@@ -11,7 +11,7 @@ interface FormProps {
 }
 
 export const LoginPage = () => {
-  const {login, getUser, error, loading, userIsLoggedIn} =
+  const {login, error, loading, userIsLoggedIn} =
     useContext(AuthContext);
 
   const {
@@ -32,10 +32,10 @@ export const LoginPage = () => {
 
   const onSubmit = (data: FormProps) => {
     login({username: data.username, password: data.password});
-    getUser({username: data.username, password: data.password});
   };
 
   if (userIsLoggedIn) {
+    console.log(userIsLoggedIn)
     return <Navigate to="/" replace />;
   }
 
