@@ -8,6 +8,8 @@ interface Props {
 
 export const Heading = ({title, icon}: Props) => {
   return (
+    <Styled.Container theme={theme}>
+
     <Styled.Container>
       <Styled.H>{title}</Styled.H>
       <span>{icon}</span>
@@ -20,6 +22,7 @@ const Styled = {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
     color: ${props => props.theme.color};
     padding: 15px;
   `,

@@ -10,6 +10,8 @@ import {More} from '../containers/home/components/more/More';
 import {Display} from '../containers/home/components/more/Display';
 import {ProtectedRoute} from './ProtectedRoute';
 import {LoginPage} from '../containers/Login/LoginPage';
+import { RegisterPage } from '../containers/Register/RegisterPage';
+import {Profile} from '../containers/home/components/main/profile/Profile';
 
 export const RoutesComponent = () => {
   return (
@@ -33,11 +35,12 @@ export const RoutesComponent = () => {
         <Route path="messages" element={<div>messages</div>} />
         <Route path="bookmarks" element={<div>bookmarks</div>} />
         <Route path="lists" element={<div>lists</div>} />
-        <Route path="profile" element={<div>profile</div>} />
+        <Route path="profile" element={<Profile/>} />
         <Route path="more" element={<More />}>
           <Route path="display" element={<Display />} />
         </Route>
         <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
         <Route
           path="*"
           element={<div style={{color: 'white'}}>This page doesn't exist</div>}

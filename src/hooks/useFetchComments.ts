@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import type {Comments} from '../containers/home/commentTypes';
 
-interface Props<T> {
+interface Props{
   comment: Comments[];
   fetchComments: () => Promise<void>;
   addNewComment: (comment: Comments) => void;
 }
 
-export const useFetchComments = <T>(
+export const useFetchComments = (
   url: string,
   initialState: Comments[]
-): Props<T> => {
+): Props => {
   const [comment, setComment] = useState<Comments[]>(initialState);
 
   const fetchComments = async () => {

@@ -24,7 +24,7 @@ export const News = () => {
   }, []);
   return (
     <Styled.Container>
-      {photo?.slice(0,7).map(item => {
+      {photo?.slice(0, 7).map(item => {
         return (
           <SingleNewsCard
             key={item.id}
@@ -39,8 +39,8 @@ export const News = () => {
 };
 
 const Styled = {
-    Container: styled.div`
+  Container: styled.div`
     border-bottom: 2px solid rgb(110, 118, 125);
     margin-bottom: 10px;
-    `
-}
+  `,
+};
