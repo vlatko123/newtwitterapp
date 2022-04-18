@@ -1,9 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {Action} from '../../containers/home/components/main/components/posts/components/Action';
 import {FaRegComment, FaRegHeart, FaRetweet} from 'react-icons/fa';
 import {FiShare} from 'react-icons/fi';
-import {ThemeContext} from '../../context/Contexts';
 
 interface Props {
   title?: string;
@@ -14,9 +13,8 @@ interface Props {
 }
 
 export const Comment = ({name, body, id, userId}: Props) => {
-  const {theme} = useContext(ThemeContext);
   return (
-    <Styled.Container theme={theme}>
+    <Styled.Container>
       <Styled.AdditionalInfo>{name}</Styled.AdditionalInfo>
       <Styled.Wrapper>
         <Styled.IconWrapper>
@@ -37,7 +35,7 @@ export const Comment = ({name, body, id, userId}: Props) => {
 };
 
 const Styled = {
-  Container: styled.div<{theme: 'dark' | 'light'}>`
+  Container: styled.div`
     display: flex;
     flex-direction: column;
     border-top: 1px solid rgb(32, 35, 39);
@@ -46,7 +44,7 @@ const Styled = {
     align-item: center;
     width: 100%;
     padding: 10px;
-    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
+    color: ${props => props.theme.color};
     &:hover {
       background: rgba(32, 35, 39, 0.2);
     }
