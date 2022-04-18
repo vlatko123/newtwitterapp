@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {ThemeContext} from '../../../../../../../context/Contexts';
 
 interface Props {
   actionNumber?: number;
@@ -8,11 +7,8 @@ interface Props {
 }
 
 export const Action = ({icon, actionNumber}: Props) => {
-
-  const {theme} = useContext(ThemeContext)
-
   return (
-    <Styled.Container theme={theme}>
+    <Styled.Container>
       <Styled.Number>{icon}</Styled.Number>
       <Styled.Icon>{actionNumber ? actionNumber : 0}</Styled.Icon>
     </Styled.Container>
@@ -20,9 +16,9 @@ export const Action = ({icon, actionNumber}: Props) => {
 };
 
 const Styled = {
-  Container: styled.div<{theme: "dark" | "light"}>`
+  Container: styled.div<{theme: 'dark' | 'light'}>`
     display: flex;
-    color: ${props => (props.theme === "light" ? "white" : "black")};
+    color: ${props => props.theme.color};
     justify-content: space-between;
     align-items: center;
     &:hover {

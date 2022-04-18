@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import {useFetch} from '../../hooks/useFetch';
 import type {Posts} from '../home/components/main/types';
@@ -12,12 +12,12 @@ import {AddComment} from '../home/components/main/addComment/AddComment';
 import {ThemeContext} from '../../context/Contexts';
 import {PageWrapper} from 'src/components copy/pageWrapper/PageWrapper';
 
+
 export const PostPage = (props: any) => {
   const navigate = useNavigate();
   const params = useParams();
   const location = useLocation();
   const state = location?.state;
-  const {theme} = useContext(ThemeContext);
 
   const {data, fetchFromApi} = useFetch(`posts/${params.id}`, {} as Posts[]);
 
@@ -37,6 +37,19 @@ export const PostPage = (props: any) => {
   }, [params.id]);
 
   return (
+    <Styled.Container className="col-6">
+      <Styled.HeadingWrapper>
+        <Styled.SpanWrapper onClick={() => navigate('/')}>
+          <FaArrowLeft />
+        </Styled.SpanWrapper>
+        <Heading title="Tweet" />
+      </Styled.HeadingWrapper>
+      <SingleTweet title={(state as any).title} body={(state as any).body} />
+      <AddComment addNewComment={addNewComment} />
+      {comment?.map(com => {
+        return <Comment key={com.id} name={com.name} body={com.body} />;
+      })}
+    </Styled.Container>
     <PageWrapper>
       <Styled.Container theme={theme} className="col-6">
         <Styled.HeadingWrapper>
@@ -56,10 +69,10 @@ export const PostPage = (props: any) => {
 };
 
 const Styled = {
-  Container: styled.div<{theme: 'dark' | 'light'}>`
+  Container: styled.div`
     max-width: 100%;
     padding: 0;
-    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
+    color: ${props => props.theme.color};
   `,
   HeadingWrapper: styled.div`
     display: flex;

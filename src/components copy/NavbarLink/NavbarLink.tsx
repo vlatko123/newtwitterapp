@@ -1,7 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
-import {ThemeContext} from '../../context/Contexts';
 
 interface Props {
   text: string;
@@ -10,10 +9,8 @@ interface Props {
 }
 
 export const NavbarLink = ({icon, text, to}: Props) => {
-  const {theme} = useContext(ThemeContext);
-
   return (
-    <Styled.Container theme={theme} to={to}>
+    <Styled.Container to={to}>
       <Styled.IconWrapper>{icon}</Styled.IconWrapper>
       <Styled.TextWrapper>{text}</Styled.TextWrapper>
     </Styled.Container>
@@ -21,13 +18,13 @@ export const NavbarLink = ({icon, text, to}: Props) => {
 };
 
 const Styled = {
-  Container: styled(NavLink)<{theme: 'dark' | 'light'}>`
+  Container: styled(NavLink)`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     margin: 10px;
-    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
+    color: ${props => props.theme.color};
   `,
   IconWrapper: styled.div`
     display: inline-block;

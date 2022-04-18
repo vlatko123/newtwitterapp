@@ -3,18 +3,18 @@ import styled from 'styled-components';
 import {ThemeContext} from '../../../../context/Contexts';
 
 export const Display = () => {
-  const {theme, changeTheme} = useContext(ThemeContext);
+  const {changeTheme} = useContext(ThemeContext);
   return (
-    <Styled.Container theme={theme}>
+    <Styled.Container>
       <h4 onClick={changeTheme}>Switch Theme</h4>
     </Styled.Container>
   );
 };
 
 const Styled = {
-  Container: styled.div<{theme: 'dark' | 'light'}>`
+  Container: styled.div`
     text-align: center;
-    color: ${props => (props.theme === 'light' ? 'white' : 'black')};
+    color: ${props => props.theme.color};
     padding: 10px 5px;
     border-bottom: 1px solid rgb(32, 35, 39);
   `,
