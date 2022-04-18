@@ -1,21 +1,20 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Action} from '../../containers/home/components/main/components/posts/components/Action';
 import {FaRegComment, FaRegHeart, FaRetweet} from 'react-icons/fa';
 import {FiShare} from 'react-icons/fi';
 import styled from 'styled-components';
-import {ThemeContext} from '../../context/Contexts';
 
 export const SingleTweet = ({title, body}: any) => {
   const date = new Date();
-  const {theme} = useContext(ThemeContext);
+
   return (
     <Styled.Container>
       <Styled.Title>
         <Styled.Image src="https://i.pravatar.cc/150" alt="avatar" />
-        <Styled.Heading theme={theme}>{title}</Styled.Heading>
+        <Styled.Heading>{title}</Styled.Heading>
       </Styled.Title>
       <Styled.Content>
-        <Styled.Body theme={theme}>{body}</Styled.Body>
+        <Styled.Body>{body}</Styled.Body>
         <Styled.Date>{date.toLocaleDateString()} Twitter Web App</Styled.Date>
       </Styled.Content>
       <Styled.Actions>
@@ -51,11 +50,11 @@ const Styled = {
   border-radius: 50%;
   margin-right: 20px;
   `,
-  Heading: styled.h5<{theme: 'dark' | 'light'}>`
+  Heading: styled.h5`
     display: flex;
     flex: 11;
     font-size: 20px;
-    color: ${props => (props.theme === 'light' ? 'white' : 'dark')};
+    color: ${props => props.theme.color};
   `,
   Content: styled.div`
     display: flex;
@@ -63,8 +62,8 @@ const Styled = {
     padding: 20px;
     border-bottom: 1px solid rgb(32, 35, 39);
   `,
-  Body: styled.h2<{theme: 'dark' | 'light'}>`
-    color: ${props => (props.theme === 'light' ? 'white' : 'dark')};
+  Body: styled.h2`
+    color: ${props => props.theme.color};
     margin-bottom: 20px;
   `,
   Date: styled.p`

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Button} from 'src/components copy/button/Button';
 import styled from 'styled-components';
 import {FiImage} from 'react-icons/fi';
@@ -9,7 +9,6 @@ import {AiOutlineSchedule} from 'react-icons/ai';
 import {GoLocation} from 'react-icons/go';
 import {usePostTweet} from 'src/hooks/usePostTweet';
 import {useForm} from 'react-hook-form';
-import {ThemeContext} from '../../../../../context/Contexts';
 
 export const AddTweet = () => {
   const {theme} = useContext(ThemeContext);
@@ -46,7 +45,6 @@ export const AddTweet = () => {
       <Styled.Avatar src="https://i.pravatar.cc/100?img=52" />
       <Styled.Form onSubmit={handleSubmit(onSubmit)}>
         <Styled.TextArea
-          theme={theme}
           {...register('tweet', {required: 'u must fill the input'})}
           maxLength={140}
           value={tweet}
@@ -113,11 +111,11 @@ const Styled = {
     width: 100%;
     margin-left: 10px;
     `,
-  TextArea: styled.textarea<{theme: 'dark' | 'light'}>`
+  TextArea: styled.textarea`
     width: 100%;
     height: 100%;
     background: transparent;
-    color: ${props => (props.theme === 'light' ? 'white' : 'dark')};
+    color: ${props => props.theme.color};
     resize: none;
     border: none;
     padding: 10px 0;
