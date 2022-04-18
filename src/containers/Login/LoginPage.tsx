@@ -11,8 +11,7 @@ interface FormProps {
 }
 
 export const LoginPage = () => {
-  const {login, error, loading, userIsLoggedIn} =
-    useContext(AuthContext);
+  const {login, error, loading, userIsLoggedIn} = useContext(AuthContext);
 
   const {
     register,
@@ -35,7 +34,6 @@ export const LoginPage = () => {
   };
 
   if (userIsLoggedIn) {
-    console.log(userIsLoggedIn)
     return <Navigate to="/" replace />;
   }
 

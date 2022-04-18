@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
-import {Modal} from 'react-bootstrap';
-import {ModalContext} from '../../context/ModalContext';
 import styled from 'styled-components';
-import {Button as Btn} from '../../components copy/button/Button';
 import {useForm} from 'react-hook-form';
+import {Modal} from 'react-bootstrap';
+import {AiOutlineClose} from 'react-icons/ai';
+import {ModalContext} from '../../context/ModalContext';
+import {Button as Btn} from '../../components copy/button/Button';
 import {changePassword} from '../../mockApi/login';
 
 interface Props {
@@ -34,7 +35,7 @@ export const EditProfile = () => {
           <Modal.Header>
             <Modal.Title>
               <div className="closeBtn" onClick={handleClose}>
-                X
+                <AiOutlineClose />
               </div>
             </Modal.Title>
           </Modal.Header>

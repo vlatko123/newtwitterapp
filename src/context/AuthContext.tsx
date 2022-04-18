@@ -27,12 +27,15 @@ interface RegisterUser {
 interface ContextValues {
   login: ({username, password}: User) => void;
   logout: () => void;
-  // getUser: ({username, password}: User) => void;
-  registerUser: ({registerUsername, registerPassword, registerEmail}: RegisterUser) => void;
+  registerUser: ({
+    registerUsername,
+    registerPassword,
+    registerEmail,
+  }: RegisterUser) => void;
   error: string;
   loading: boolean;
   userIsLoggedIn?: boolean;
-  user?: User 
+  user?: User;
   registeredUser?: RegisterUser;
   userIsRegistered?: boolean;
 }
@@ -41,7 +44,6 @@ export const AuthContext = React.createContext<ContextValues>({
   user: undefined,
   login: () => {},
   logout: () => {},
-  // getUser: () => {},
   registerUser: () => {},
   error: '',
   loading: false,
@@ -234,8 +236,6 @@ export const AuthContextsConstructor = ({
 }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
-  
-
   useEffect(() => {
     dispatch({
       type: ActionEnum.LOADING,
@@ -248,7 +248,7 @@ export const AuthContextsConstructor = ({
     const timeout = setTimeout(() => {
       const accessToken = readFromStorage(LocalStorageConstants.AccessToken);
       if (accessToken) {
-        const checkUser = getUser({accessToken})
+        const checkUser = getUser({accessToken});
         dispatch({
           type: ActionEnum.LOGIN_SUCCESS,
           payload: {
@@ -386,11 +386,21 @@ export const AuthContextsConstructor = ({
       },
     });
     try {
-      const result = await registerApi({registerUsername, registerPassword, registerEmail});
+      const result = await registerApi({
+        registerUsername,
+        registerPassword,
+        registerEmail,
+      });
       writeInStorage(LocalStorageConstants.AccessToken, result.accessToken);
       writeInStorage(LocalStorageConstants.RefreshToken, result.refreshToken);
-      writeInStorage(LocalStorageConstants.RegisterUsername, result.registerUsername);
-      writeInStorage(LocalStorageConstants.RegisterPassword, result.registerPassword);
+      writeInStorage(
+        LocalStorageConstants.RegisterUsername,
+        result.registerUsername
+      );
+      writeInStorage(
+        LocalStorageConstants.RegisterPassword,
+        result.registerPassword
+      );
       writeInStorage('email', result.registerEmail);
       dispatch({
         type: ActionEnum.REGISTER_SUCCESS,

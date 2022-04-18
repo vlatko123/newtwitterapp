@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  onClick?: () => void;
   backgroundColor: string;
+  onClick?: () => void;
   textColor?: string;
   padding?: string;
   name?: string;
@@ -33,12 +33,12 @@ export const Button = ({
       {...rest}
       onClick={onClick}
       style={{
-        backgroundColor: backgroundColor,
+        backgroundColor,
         color: textColor,
-        padding: padding,
-        margin: margin,
-        borderRadius: borderRadius,
-        border: border,
+        padding,
+        margin,
+        borderRadius,
+        border,
       }}
     >
       {name}
