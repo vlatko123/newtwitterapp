@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
-import styled from 'styled-components';
-import {FaCog} from 'react-icons/fa';
+import {Post} from './components/posts/Post';
+import {AddTweet} from './addTweet/AddTweet';
 import {Heading} from '../../../../components copy/heading/Heading';
+import {FaCog} from 'react-icons/fa';
+import styled from 'styled-components';
 import {TweetsContext} from '../../../../context/TweetsContext';
 import {PageWrapper} from '../../../../components copy/pageWrapper/PageWrapper';
-import {AddTweet} from './addTweet/AddTweet';
-import {Post} from './components/posts/Post';
 
 export const Main = () => {
   const {tweets} = useContext(TweetsContext);
@@ -27,7 +27,7 @@ export const Main = () => {
           );
         })}
       </Styled.Main>
-   </PageWrapper>
+    </PageWrapper>
   );
 };
 

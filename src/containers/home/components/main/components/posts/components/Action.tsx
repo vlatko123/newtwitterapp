@@ -16,7 +16,7 @@ export const Action = ({icon, actionNumber}: Props) => {
 };
 
 const Styled = {
-  Container: styled.div`
+  Container: styled.div<{theme: 'dark' | 'light'}>`
     display: flex;
     color: ${props => props.theme.color};
     justify-content: space-between;

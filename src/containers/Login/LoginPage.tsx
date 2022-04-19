@@ -1,9 +1,9 @@
 import React, {useContext, useEffect} from 'react';
+import {Button} from '../../components copy/button/Button';
 import styled from 'styled-components';
 import {useForm} from 'react-hook-form';
-import {Navigate} from 'react-router-dom';
-import {Button} from '../../components copy/button/Button';
 import {AuthContext} from '../../context/AuthContext';
+import {Navigate} from 'react-router-dom';
 
 interface FormProps {
   username: string;
