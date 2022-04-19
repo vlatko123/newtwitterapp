@@ -9,21 +9,18 @@ import {ContextsConstructor} from './context/Contexts';
 import {ContextsConstructor} from '../src/context/Contexts';
 import {TweetsContextsConstructor} from './context/TweetsContext';
 import {AuthContextsConstructor} from './context/AuthContext';
-import {ModalContextsConstructor} from './context/ModalContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalContextsConstructor>
-      <AuthContextsConstructor>
-        <BrowserRouter>
-          <ContextsConstructor>
-            <TweetsContextsConstructor>
-              <App />
-            </TweetsContextsConstructor>
-          </ContextsConstructor>
-        </BrowserRouter>
-      </AuthContextsConstructor>
-    </ModalContextsConstructor>
+    <AuthContextsConstructor>
+      <BrowserRouter>
+        <ContextsConstructor>
+          <TweetsContextsConstructor>
+            <App />
+          </TweetsContextsConstructor>
+        </ContextsConstructor>
+      </BrowserRouter>
+    </AuthContextsConstructor>
   </React.StrictMode>,
   document.getElementById('root')
 );

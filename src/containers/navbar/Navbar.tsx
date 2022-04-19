@@ -14,11 +14,10 @@ import {HiOutlineDotsCircleHorizontal} from 'react-icons/hi';
 
 export const Navbar = () => {
 import {ThemeContext} from '../../context/Contexts';
-import {LogoutBtn} from './LogoutBtn';
+import {AuthContext} from '../../context/AuthContext';
 
 export const Navbar = () => {
   const {theme} = useContext(ThemeContext);
-
   const {logout} = useContext(AuthContext);
   
   return (
@@ -43,8 +42,12 @@ export const Navbar = () => {
         textColor="white"
         padding="15px 30px"
       />
-
-      <LogoutBtn />
+      <Button
+        backgroundColor="RGB(29, 155, 240)"
+        textColor="white"
+        name="Logout"
+        onClick={logout}
+      />
     </Styled.Container>
   );
 };
