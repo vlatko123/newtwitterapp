@@ -24,7 +24,7 @@ const Styled = {
     margin-top: 20px;
   `,
   Heading: styled.div`
-    color: white;
+    color: ${props => props.theme.color};
     display: flex;
    
   `,

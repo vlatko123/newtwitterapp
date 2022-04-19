@@ -1,17 +1,16 @@
 import React from 'react';
-import {Button} from 'src/components copy/button/Button';
 import styled from 'styled-components';
+import {useForm} from 'react-hook-form';
 import {FiImage} from 'react-icons/fi';
 import {RiFileGifLine} from 'react-icons/ri';
 import {BiPoll} from 'react-icons/bi';
 import {BsEmojiSmile} from 'react-icons/bs';
 import {AiOutlineSchedule} from 'react-icons/ai';
 import {GoLocation} from 'react-icons/go';
-import {usePostTweet} from 'src/hooks/usePostTweet';
-import {useForm} from 'react-hook-form';
+import {Button} from '../../../../../components copy/button/Button';
+import {usePostTweet} from '../../../../../hooks/usePostTweet';
 
 export const AddTweet = () => {
-  const {theme} = useContext(ThemeContext);
   const {tweet, error, loading, postTweet, setTweet} = usePostTweet();
 
   const {

@@ -38,13 +38,13 @@ const Styled = {
   Heading: styled.h3`
     display: flex;
     flex: 11;
-    color: white;
+    color: ${props => props.theme.color};
   `,
   Nav: styled.nav`
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid ${props => props.theme.color};
     padding-bottom: 1rem;
   `,
 };
