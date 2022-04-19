@@ -2,6 +2,7 @@ import {useEffect} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import {useFetch} from '../../hooks/useFetch';
 import type {Posts} from '../home/components/main/types';
+import type {Comments} from '../../containers/home/commentTypes';
 import {SingleTweet} from '../postPage/SingleTweet';
 import styled from 'styled-components';
 import {Heading} from '../../components copy/heading/Heading';
@@ -19,7 +20,10 @@ export const PostPage = (props: any) => {
   const location = useLocation();
   const state = location?.state;
 
-  const {data, fetchFromApi} = useFetch(`posts/${params.id}`, {} as Posts[]);
+  const {data, fetchFromApi} = useFetch<Posts[]>(
+    `posts/${params.id}`,
+    {} as Posts[]
+  );
 
   useEffect(() => {
     if (!(location?.state as any)?.id) {
@@ -27,7 +31,7 @@ export const PostPage = (props: any) => {
     }
   }, [params.id]);
 
-  const {comment, fetchComments, addNewComment} = useFetchComments(
+  const {comment, fetchComments, addNewComment} = useFetchComments<Comments[]>(
     `${params.id}/comments`,
     []
   );
