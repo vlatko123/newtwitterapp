@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import type {Posts} from '../containers/home/components/main/types';
 
-interface Props {
+interface Props<T> {
   data: Posts[];
   fetchFromApi: () => Promise<void>;
   addNewTweet: (post: Posts) => void;
 }
 
-export const useFetch = (url: string, initialState: Posts[]): Props => {
+export const useFetch = <T>(url: string, initialState: Posts[]): Props<T> => {
   const [data, setData] = useState<Posts[]>(initialState);
 
   const fetchFromApi = async () => {

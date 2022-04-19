@@ -40,7 +40,6 @@ export const RoutesComponent = () => {
           <Route path="display" element={<Display />} />
         </Route>
         <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
         <Route
           path="*"
           element={<div style={{color: 'white'}}>This page doesn't exist</div>}

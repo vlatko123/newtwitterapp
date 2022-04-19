@@ -37,8 +37,12 @@ export const Navbar = () => {
         textColor="white"
         padding="15px 30px"
       />
-
-      <LogoutBtn />
+      <Button
+        backgroundColor="RGB(29, 155, 240)"
+        textColor="white"
+        name="Logout"
+        onClick={logout}
+      />
     </Styled.Container>
   );
 };

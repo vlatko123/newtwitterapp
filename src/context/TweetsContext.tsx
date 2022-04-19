@@ -19,7 +19,11 @@ export const TweetsContextsConstructor = ({
 }: {
   children: JSX.Element;
 }) => {
-  const {data: tweets, fetchFromApi, addNewTweet} = useFetch('posts', []);
+  const {
+    data: tweets,
+    fetchFromApi,
+    addNewTweet,
+  } = useFetch<Posts[]>('posts', []);
 
   useEffect(() => {
     fetchFromApi();

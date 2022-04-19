@@ -12,17 +12,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalContextsConstructor>
-      <AuthContextsConstructor>
-        <BrowserRouter>
-          <ContextsConstructor>
-            <TweetsContextsConstructor>
-              <App />
-            </TweetsContextsConstructor>
-          </ContextsConstructor>
-        </BrowserRouter>
-      </AuthContextsConstructor>
-    </ModalContextsConstructor>
+    <AuthContextsConstructor>
+      <BrowserRouter>
+        <ContextsConstructor>
+          <TweetsContextsConstructor>
+            <App />
+          </TweetsContextsConstructor>
+        </ContextsConstructor>
+      </BrowserRouter>
+    </AuthContextsConstructor>
   </React.StrictMode>,
   document.getElementById('root')
 );

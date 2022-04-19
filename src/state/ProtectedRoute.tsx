@@ -8,5 +8,5 @@ interface Props {
 export const ProtectedRoute = ({children}: Props) => {
   const {userIsLoggedIn} = useContext(AuthContext);
 
-  return userIsLoggedIn ? children : <Navigate to="/register" replace />;
+  return userIsLoggedIn ? children : <Navigate to="/login" replace />;
 };
