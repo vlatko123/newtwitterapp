@@ -1,9 +1,9 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
-import {Action} from '../posts/components/Action';
 import {FaRegComment, FaRegHeart, FaRetweet} from 'react-icons/fa';
 import {FiShare} from 'react-icons/fi';
+import {Action} from '../posts/components/Action';
 
 interface Props {
   title?: string;
