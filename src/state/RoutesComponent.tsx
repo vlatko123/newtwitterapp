@@ -1,17 +1,17 @@
-import {Explore} from '../containers/home/components/explore/Explore';
 import {Routes, Route} from 'react-router-dom';
+import styled from 'styled-components';
+import {Explore} from '../containers/home/components/explore/Explore';
 import {Main} from '../containers/home/components/main/Main';
 import {PostPage} from '../containers/postPage/PostPage';
 import {Notifications} from '../../src/containers/home/components/notifications/Notifications';
 import {All} from '../containers/home/components/notifications/All';
 import {Mentions} from '../containers/home/components/notifications/Mentions';
-import styled from 'styled-components';
 import {More} from '../containers/home/components/more/More';
 import {Display} from '../containers/home/components/more/Display';
-import {ProtectedRoute} from './ProtectedRoute';
 import {LoginPage} from '../containers/Login/LoginPage';
-import { RegisterPage } from '../containers/Register/RegisterPage';
+import {RegisterPage} from '../containers/Register/RegisterPage';
 import {Profile} from '../containers/home/components/main/profile/Profile';
+import {ProtectedRoute} from './ProtectedRoute';
 
 export const RoutesComponent = () => {
   return (
@@ -35,7 +35,7 @@ export const RoutesComponent = () => {
         <Route path="messages" element={<div>messages</div>} />
         <Route path="bookmarks" element={<div>bookmarks</div>} />
         <Route path="lists" element={<div>lists</div>} />
-        <Route path="profile" element={<Profile/>} />
+        <Route path="profile" element={<Profile />} />
         <Route path="more" element={<More />}>
           <Route path="display" element={<Display />} />
         </Route>

@@ -1,15 +1,15 @@
 import React from 'react';
-import {Button} from '../../../../../components copy/button/Button';
 import styled from 'styled-components';
+import {useForm} from 'react-hook-form';
 import {FiImage} from 'react-icons/fi';
 import {RiFileGifLine} from 'react-icons/ri';
 import {BiPoll} from 'react-icons/bi';
 import {BsEmojiSmile} from 'react-icons/bs';
 import {AiOutlineSchedule} from 'react-icons/ai';
 import {GoLocation} from 'react-icons/go';
+import {Button} from '../../../../../components copy/button/Button';
 import {usePostComment} from '../../../../../hooks/usePostComment';
 import type {Comments} from '../../../commentTypes';
-import {useForm} from 'react-hook-form';
 
 interface Props {
   addNewComment: (comment: Comments) => void;

@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {ModalContext} from '../../context/ModalContext';
 import styled from 'styled-components';
+import {Navigate} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
-import {ModalPopup} from '../../components copy/modal/ModalPopup';
 import {FaTwitter} from 'react-icons/fa';
+import {ModalContext} from '../../context/ModalContext';
+import {ModalPopup} from '../../components copy/modal/ModalPopup';
 import {Button as Btn} from '../../components copy/button/Button';
 import {AuthContext} from '../../context/AuthContext';
-import {Navigate} from 'react-router-dom';
 
 export const RegisterPage = () => {
   const {handleShow} = useContext(ModalContext);
