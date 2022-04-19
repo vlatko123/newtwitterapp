@@ -4,13 +4,7 @@ import {
   readFromStorage,
   removeFromStorage,
 } from '../utils/localStorage';
-import {
-  CustomLoginError,
-  getUser,
-  loginApi,
-  logoutApi,
-  registerApi,
-} from '../mockApi/login';
+import {CustomLoginError, loginApi, logoutApi} from '../mockApi/login';
 import {LocalStorageConstants} from '../constants/Constants';
 
 interface User {
@@ -18,38 +12,22 @@ interface User {
   password: string;
 }
 
-interface RegisterUser {
-  registerUsername: string;
-  registerPassword: string;
-  registerEmail: string;
-}
-
 interface ContextValues {
   login: ({username, password}: User) => void;
   logout: () => void;
-  registerUser: ({
-    registerUsername,
-    registerPassword,
-    registerEmail,
-  }: RegisterUser) => void;
   error: string;
   loading: boolean;
   userIsLoggedIn?: boolean;
   user?: User;
-  registeredUser?: RegisterUser;
-  userIsRegistered?: boolean;
 }
 
 export const AuthContext = React.createContext<ContextValues>({
   user: undefined,
   login: () => {},
   logout: () => {},
-  registerUser: () => {},
   error: '',
   loading: false,
   userIsLoggedIn: false,
-  userIsRegistered: false,
-  registeredUser: undefined,
 });
 
 type ReducerState = {
@@ -57,8 +35,6 @@ type ReducerState = {
   loading: boolean;
   error: string;
   user?: User;
-  userIsRegistered?: boolean;
-  registeredUser?: RegisterUser;
 };
 
 const INITIAL_STATE: ReducerState = {
@@ -66,8 +42,6 @@ const INITIAL_STATE: ReducerState = {
   loading: false,
   error: '',
   user: undefined,
-  userIsRegistered: false,
-  registeredUser: undefined,
 };
 
 enum ActionEnum {
@@ -78,8 +52,6 @@ enum ActionEnum {
   LOGOUT_SUCCESS = 'LOGOUT_SUCCESS',
   LOGOUT_FAILURE = 'LOGOUT_FAILURE',
   LOADING = 'LOADING',
-  REGISTER_SUCCESS = 'REGISTER_SUCCESS',
-  REGISTER_FAILURE = 'REGISTER_FAILURE',
 }
 
 type Action =
@@ -97,7 +69,7 @@ type Action =
       payload: {
         loading: false;
         error: '';
-        user: User | any;
+        user: User;
         userIsLoggedIn: true;
       };
     }
@@ -132,27 +104,7 @@ type Action =
       payload: {
         loading: boolean;
         error: string;
-        userIsLoggedIn: false;
-      };
-    }
-  | {
-      type: ActionEnum.REGISTER_SUCCESS;
-      payload: {
-        loading: boolean;
-        error: string;
-        userIsRegistered: boolean;
         userIsLoggedIn: boolean;
-        registeredUser: RegisterUser | any;
-      };
-    }
-  | {
-      type: ActionEnum.REGISTER_FAILURE;
-      payload: {
-        loading: boolean;
-        error: string;
-        userIsRegistered: boolean;
-        userIsLoggedIn: boolean;
-        registeredUser: undefined;
       };
     };
 
@@ -207,24 +159,6 @@ const reducer = (state: ReducerState, action: Action) => {
       userIsLoggedIn: action.payload.userIsLoggedIn,
     };
   }
-  if (action.type === ActionEnum.REGISTER_SUCCESS) {
-    return {
-      loading: action.payload.loading,
-      error: action.payload.error,
-      userIsLoggedIn: action.payload.userIsLoggedIn,
-      userIsRegistered: action.payload.userIsRegistered,
-      registeredUser: action.payload.registeredUser,
-    };
-  }
-  if (action.type === ActionEnum.REGISTER_FAILURE) {
-    return {
-      loading: action.payload.loading,
-      error: action.payload.error,
-      userIsLoggedIn: action.payload.userIsLoggedIn,
-      userIsRegistered: action.payload.userIsRegistered,
-      registeredUser: action.payload.registeredUser,
-    };
-  }
 
   return state;
 };
@@ -246,13 +180,11 @@ export const AuthContextsConstructor = ({
       },
     });
     const timeout = setTimeout(() => {
-      const accessToken = readFromStorage(LocalStorageConstants.AccessToken);
-      if (accessToken) {
-        const checkUser = getUser({accessToken});
+      if (readFromStorage(LocalStorageConstants.AccessToken)) {
         dispatch({
           type: ActionEnum.LOGIN_SUCCESS,
           payload: {
-            user: checkUser,
+            user: {username: 'domasna', password: 'domasna'},
             userIsLoggedIn: true,
             loading: false,
             error: '',
@@ -270,6 +202,7 @@ export const AuthContextsConstructor = ({
         });
       }
     }, 1000);
+
     return () => {
       clearTimeout(timeout);
     };
@@ -295,8 +228,6 @@ export const AuthContextsConstructor = ({
       const result = await loginApi({username, password});
       writeInStorage(LocalStorageConstants.AccessToken, result.accessToken);
       writeInStorage(LocalStorageConstants.RefreshToken, result.refreshToken);
-      writeInStorage(LocalStorageConstants.LoginUsername, result.username);
-      writeInStorage(LocalStorageConstants.LoginPassword, result.password);
       dispatch({
         type: ActionEnum.LOGIN_SUCCESS,
         payload: {
@@ -333,10 +264,6 @@ export const AuthContextsConstructor = ({
       await logoutApi({accessToken});
       removeFromStorage(LocalStorageConstants.AccessToken);
       removeFromStorage(LocalStorageConstants.RefreshToken);
-      removeFromStorage(LocalStorageConstants.LoginUsername);
-      removeFromStorage(LocalStorageConstants.LoginPassword);
-      removeFromStorage(LocalStorageConstants.RegisterUsername);
-      removeFromStorage(LocalStorageConstants.RegisterPassword);
       dispatch({
         type: ActionEnum.LOGOUT_SUCCESS,
         payload: {
@@ -367,77 +294,28 @@ export const AuthContextsConstructor = ({
     }
   };
 
-  const registerUser = async ({
-    registerUsername,
-    registerPassword,
-    registerEmail,
-  }: {
-    registerUsername: string;
-    registerPassword: string;
-    registerEmail: string;
-  }) => {
-    dispatch({
-      type: ActionEnum.LOGIN_IN_PROGRESS,
-      payload: {
-        loading: true,
-        error: '',
-        userIsLoggedIn: false,
-        user: undefined,
-      },
-    });
-    try {
-      const result = await registerApi({
-        registerUsername,
-        registerPassword,
-        registerEmail,
-      });
-      writeInStorage(LocalStorageConstants.AccessToken, result.accessToken);
-      writeInStorage(LocalStorageConstants.RefreshToken, result.refreshToken);
-      writeInStorage(
-        LocalStorageConstants.RegisterUsername,
-        result.registerUsername
-      );
-      writeInStorage(
-        LocalStorageConstants.RegisterPassword,
-        result.registerPassword
-      );
-      writeInStorage('email', result.registerEmail);
-      dispatch({
-        type: ActionEnum.REGISTER_SUCCESS,
-        payload: {
-          loading: false,
-          registeredUser: {registerUsername, registerPassword, registerEmail},
-          userIsLoggedIn: true,
-          userIsRegistered: true,
-          error: '',
-        },
-      });
-    } catch (err: any) {
-      dispatch({
-        type: ActionEnum.REGISTER_FAILURE,
-        payload: {
-          loading: false,
-          error: (err as CustomLoginError)?.message,
-          userIsLoggedIn: false,
-          userIsRegistered: false,
-          registeredUser: undefined,
-        },
-      });
-    }
-  };
+  //homework
+  // export const getUserApi = ({}) => {
+  //#1 domasna napravi mockApi slicno na toa za login sto ke vraka nekoj mock user
+  // }
+
+  // export const registerMockApi =({}) => {
+  //#2 da se napravi register page na koj ke vnesuvame podatoci i istite ke gi zacuvame vo local storage. Userot mora da e avtomatski logiran
+  // }
+
+  //#3 logout button
+
+  //#4 na registriraniot user treba da mu napravime dizajn za profilot kade sto moze da smeniime password
 
   return (
     <AuthContext.Provider
       value={{
         user: state.user,
-        registeredUser: state.registeredUser,
         login,
         error: state.error,
         loading: state.loading,
         userIsLoggedIn: state.userIsLoggedIn,
         logout,
-        registerUser,
-        userIsRegistered: state.userIsRegistered,
       }}
     >
       {children}
