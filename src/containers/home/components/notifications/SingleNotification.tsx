@@ -37,13 +37,13 @@ export const SingleNotification = ({
 const Styled = {
   Container: styled.div`
     display: flex;
-    border-bottom: 1px solid ${props => props.theme.color};
+    border-bottom: 1px solid white;
     margin-top: 10px;
   `,
   Icon: styled.div`
     display: flex;
     flex: 1
-    border: 1px solid ${props => props.theme.color};
+    border: 1px solid white;
     color: purple;
     padding: 15px;
     font-size: 40px;
@@ -86,9 +86,9 @@ const Styled = {
     margin-top: 10px;
   `,
   Heading: styled.h3`
-    color: ${props => props.theme.color};
+    color: white;
   `,
   Content: styled.p`
-    color: ${props => props.theme.color};
+    color: white;
   `,
 };

@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import styled, {ThemeProvider} from 'styled-components';
 import {RoutesComponent} from './state/RoutesComponent';
+import './App.css';
+import styled, {ThemeProvider} from 'styled-components';
 import {ThemeContext} from './context/Contexts';
 import {theme} from './theme/theme';
-import './App.css';
 
 function App() {
   const {localTheme} = useContext(ThemeContext);
@@ -14,8 +14,17 @@ function App() {
         <div className="row">
           <div className="container">
             {/*whole app goes down here */}
-            <RoutesComponent />
+            <div className="row">
+              <Navbar />
+              <RoutesComponent />
+              <Search />
+            </div>
           </div>
+    <Styled.Container theme={theme} className="container-fluid">
+      <div className="row">
+        <div className="container">
+          {/*whole app goes down here */}
+          <RoutesComponent />
         </div>
       </Styled.Container>
     </ThemeProvider>
