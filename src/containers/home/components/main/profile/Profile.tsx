@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
-import styled from 'styled-components';
-import {PageWrapper} from '../../../../../components copy/pageWrapper/PageWrapper';
-import {FaArrowLeft} from 'react-icons/fa';
-import {Heading} from '../../../../../components copy/heading/Heading';
 import {useNavigate} from 'react-router-dom';
+import styled from 'styled-components';
+import {FaArrowLeft} from 'react-icons/fa';
+import {GoCalendar} from 'react-icons/go';
+import {PageWrapper} from '../../../../../components copy/pageWrapper/PageWrapper';
+import {Heading} from '../../../../../components copy/heading/Heading';
 import {AuthContext} from '../../../../../context/AuthContext';
 import {Button as Btn} from '../../../../../components copy/button/Button';
 import {ModalContext} from '../../../../../context/ModalContext';
-import {GoCalendar} from 'react-icons/go';
 import {EditProfile} from '../../../../../components copy/modal/EditProfile';
 
 export const Profile = () => {
@@ -70,7 +70,7 @@ export const Profile = () => {
 const Styled = {
   Container: styled.div`
     width: 100%;
-    color: white;
+    color: ${props => props.theme.color};
     padding: 0;
   `,
   HeadingWrapper: styled.div`
@@ -93,7 +93,7 @@ const Styled = {
   `,
   HeadingImage: styled.div`
     width: 100%;
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid ${props => props.theme.color};
   `,
   Wrapper: styled.div`
     display: flex;
@@ -108,7 +108,7 @@ const Styled = {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 3px solid white;
+    border: 3px solid ${props => props.theme.color};
   `,
   ProfileInfo: styled.div`
     display: flex;

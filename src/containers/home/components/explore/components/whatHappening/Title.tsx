@@ -11,7 +11,7 @@ export const Title = ({title}: TitleType) => {
 
 const Styled = {
   Title: styled.h2`
-    color: white;
+    color: ${props => props.theme.color};
     margin: 10px 0;
     border-top: 2px solid rgb(110, 118, 125);
     padding-top: 10px;

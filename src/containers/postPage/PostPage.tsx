@@ -1,17 +1,15 @@
 import {useEffect} from 'react';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import styled from 'styled-components';
+import {FaArrowLeft} from 'react-icons/fa';
 import {useFetch} from '../../hooks/useFetch';
 import type {Posts} from '../home/components/main/types';
 import {SingleTweet} from '../postPage/SingleTweet';
-import styled from 'styled-components';
 import {Heading} from '../../components copy/heading/Heading';
-import {FaArrowLeft} from 'react-icons/fa';
-import {useFetchComments} from 'src/hooks/useFetchComments';
+import {useFetchComments} from '../../hooks/useFetchComments';
 import {Comment} from '../../containers/postPage/Comment';
 import {AddComment} from '../home/components/main/addComment/AddComment';
-import {ThemeContext} from '../../context/Contexts';
-import {PageWrapper} from 'src/components copy/pageWrapper/PageWrapper';
-
+import {PageWrapper} from '../../components copy/pageWrapper/PageWrapper';
 
 export const PostPage = (props: any) => {
   const navigate = useNavigate();
@@ -37,21 +35,8 @@ export const PostPage = (props: any) => {
   }, [params.id]);
 
   return (
-    <Styled.Container className="col-6">
-      <Styled.HeadingWrapper>
-        <Styled.SpanWrapper onClick={() => navigate('/')}>
-          <FaArrowLeft />
-        </Styled.SpanWrapper>
-        <Heading title="Tweet" />
-      </Styled.HeadingWrapper>
-      <SingleTweet title={(state as any).title} body={(state as any).body} />
-      <AddComment addNewComment={addNewComment} />
-      {comment?.map(com => {
-        return <Comment key={com.id} name={com.name} body={com.body} />;
-      })}
-    </Styled.Container>
     <PageWrapper>
-      <Styled.Container theme={theme} className="col-6">
+      <Styled.Container className="col-6">
         <Styled.HeadingWrapper>
           <Styled.SpanWrapper onClick={() => navigate('/')}>
             <FaArrowLeft />

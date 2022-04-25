@@ -13,7 +13,7 @@ export const Settings = () => {
 const Styled = {
   Icon: styled.div`
     font-size: 20px;
-    color: white;
+    color: ${props => props.theme.color};
     margin-left: 15px;
     display: flex;
     justify-content: center;

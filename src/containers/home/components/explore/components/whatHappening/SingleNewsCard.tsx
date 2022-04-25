@@ -39,7 +39,7 @@ const Styled = {
     align-items: flex-start;
   `,
   Main: styled.h4`
-    color: white;
+    color: ${props => props.theme.color};
   `,
   Heading: styled.h6`
     color: rgb(110, 118, 125);

@@ -19,13 +19,12 @@ const Styled = {
     width: 100%;
     display: flex;
     flex-direction: column;
-     justify-content: center;
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
   `,
   Heading: styled.div`
-    color: white;
+    color: ${props => props.theme.color};
     display: flex;
-   
   `,
 };

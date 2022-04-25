@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import styled from 'styled-components';
 import {useForm} from 'react-hook-form';
 import {Modal} from 'react-bootstrap';
+import {AiOutlineClose} from 'react-icons/ai'
 import {ModalContext} from '../../context/ModalContext';
 import {AuthContext} from '../../context/AuthContext';
 import {Button as Btn} from '../../components copy/button/Button';
@@ -37,7 +38,8 @@ export const ModalPopup = () => {
         <Modal.Header>
           <Modal.Title>
             <div className="closeBtn" onClick={handleClose}>
-              X
+            <AiOutlineClose />
+
             </div>
           </Modal.Title>
         </Modal.Header>

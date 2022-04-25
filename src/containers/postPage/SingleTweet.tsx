@@ -1,8 +1,8 @@
 import React from 'react';
-import {Action} from '../../containers/home/components/main/components/posts/components/Action';
 import {FaRegComment, FaRegHeart, FaRetweet} from 'react-icons/fa';
 import {FiShare} from 'react-icons/fi';
 import styled from 'styled-components';
+import {Action} from '../../containers/home/components/main/components/posts/components/Action';
 
 export const SingleTweet = ({title, body}: any) => {
   const date = new Date();

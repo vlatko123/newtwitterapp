@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Button} from 'src/components copy/button/Button';
-import {NavbarLink} from 'src/components copy/NavbarLink/NavbarLink';
 import {FaTwitter} from 'react-icons/fa';
 import {FaHome} from 'react-icons/fa';
 import {FaHashtag} from 'react-icons/fa';
@@ -11,16 +9,11 @@ import {FaBookmark} from 'react-icons/fa';
 import {FaRegListAlt} from 'react-icons/fa';
 import {FaUser} from 'react-icons/fa';
 import {HiOutlineDotsCircleHorizontal} from 'react-icons/hi';
-
-export const Navbar = () => {
-import {ThemeContext} from '../../context/Contexts';
+import {Button} from '../../components copy/button/Button';
+import {NavbarLink} from '../../components copy/NavbarLink/NavbarLink';
 import {LogoutBtn} from './LogoutBtn';
 
 export const Navbar = () => {
-  const {theme} = useContext(ThemeContext);
-
-  const {logout} = useContext(AuthContext);
-  
   return (
     <Styled.Container className="col-3">
       <NavbarLink to="/" text="" icon={<FaTwitter />} />

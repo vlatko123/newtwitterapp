@@ -27,7 +27,7 @@ const Styled = {
     justify-content: space-between;
     margin: 10px 20px;
     padding: 10px;
-    color: white;
+    color: ${props => props.theme.color};
     &:hover{
         background: rgba(32, 35, 39, 0.2);
         border-radius: 20px;
