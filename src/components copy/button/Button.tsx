@@ -3,11 +3,14 @@ import styled from 'styled-components';
 
 interface Props {
   backgroundColor: string;
-  textColor: string;
+  onClick?: () => void;
+  textColor?: string;
   padding?: string;
   name?: string;
   type?: React.HTMLProps<HTMLButtonElement>['type'];
-  onClick?: () => void;
+  borderRadius?: string;
+  margin?: string;
+  border?: string;
 }
 
 export const Button = ({
@@ -17,6 +20,9 @@ export const Button = ({
   padding,
   onClick,
   type,
+  margin,
+  borderRadius,
+  border,
   ...rest
 }: React.HTMLProps<HTMLButtonElement> & Props) => {
   return (
@@ -27,9 +33,12 @@ export const Button = ({
       {...rest}
       onClick={onClick}
       style={{
-        backgroundColor: backgroundColor,
+        backgroundColor,
         color: textColor,
-        padding: padding,
+        padding,
+        margin,
+        borderRadius,
+        border,
       }}
     >
       {name}

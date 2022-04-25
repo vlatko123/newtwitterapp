@@ -5,22 +5,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
-import {ContextsConstructor} from './context/Contexts';
 import {ContextsConstructor} from '../src/context/Contexts';
 import {TweetsContextsConstructor} from './context/TweetsContext';
 import {AuthContextsConstructor} from './context/AuthContext';
+import {ModalContextsConstructor} from './context/ModalContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthContextsConstructor>
-      <BrowserRouter>
-        <ContextsConstructor>
-          <TweetsContextsConstructor>
-            <App />
-          </TweetsContextsConstructor>
-        </ContextsConstructor>
-      </BrowserRouter>
-    </AuthContextsConstructor>
+    <ModalContextsConstructor>
+      <AuthContextsConstructor>
+        <BrowserRouter>
+          <ContextsConstructor>
+            <TweetsContextsConstructor>
+              <App />
+            </TweetsContextsConstructor>
+          </ContextsConstructor>
+        </BrowserRouter>
+      </AuthContextsConstructor>
+    </ModalContextsConstructor>
   </React.StrictMode>,
   document.getElementById('root')
 );

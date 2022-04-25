@@ -1,21 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link, Outlet} from 'react-router-dom';
-import {Heading} from 'src/components copy/heading/Heading';
-import {ThemeContext} from '../../../../context/Contexts';
+import {Heading} from '../../../../components copy/heading/Heading';
 import {PageWrapper} from '../../../../components copy/pageWrapper/PageWrapper';
 
 export const More = () => {
   return (
-    <Styled.Container>
-      <Heading title="More" />
-      <Styled.DisplayLink to="display">Display</Styled.DisplayLink>
-      <Outlet />
-    </Styled.Container>
     <PageWrapper>
       <Styled.Container className="col-6">
         <Heading title="More" />
-        <Styled.DisplayLink theme={theme} to="display">
+        <Styled.DisplayLink to="display">
           Display
         </Styled.DisplayLink>
         <Outlet />
@@ -30,7 +24,7 @@ const Styled = {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: ${props => props.theme.color};
   `,
   DisplayLink: styled(Link)`
     text-decoration: none !important;
